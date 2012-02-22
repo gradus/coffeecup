@@ -23,9 +23,9 @@
     "coffeescript"
   ],
   "bin": {
-    "coffeecup": "./bin/coffeekup"
+    "coffeecup": "./bin/coffeecup"
   },
-  "main": "./lib/coffeekup",
+  "main": "./lib/coffeecup",
   "engines": {
     "node": ">= 0.4.7"
   },

@@ -68,7 +68,7 @@ tests =
     template: 'h1 "harcoded: " + obj.foo'
     run: ->
       obj = {foo: 'bar'}
-      @compiled = ck.compile(@template, hardcode: {obj})
+      @compiled = cc.compile(@template, hardcode: {obj})
       @expected = '<h1>harcoded: bar</h1>'
       @result = @compiled()
       @success = @result is @expected
@@ -167,8 +167,8 @@ tests =
     template: "p \"This text could use \#{yield -> strong -> a href: '/', 'a link'}.\""
     expected: '<p>This text could use <strong><a href="/">a link</a></strong>.</p>'
 
-ck = require './src/coffeekup'
-render = ck.render
+cc = require './src/coffeecup'
+render = cc.render
 
 @run = ->
   {print} = require 'sys'
@@ -185,7 +185,7 @@ render = ck.render
       if test.run
         test.run()
       else
-        test.result = ck.render(test.template, test.params)
+        test.result = cc.render(test.template, test.params)
         test.success = test.result is test.expected
         
       if test.success

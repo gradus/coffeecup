@@ -1,11 +1,15 @@
-# CoffeeKup <☕/>
+# CoffeeCup <☕/>
 ## Markup as CoffeeScript
 
-CoffeeKup is a templating engine for [node.js](http://nodejs.org) and browsers that lets you to write your HTML templates in 100% pure [CoffeeScript](http://coffeescript.org).
+This is a clone of @mauricemach [CoffeeKup](https://github.com/mauricemach/coffeekup).
+
+I am renaming and trying to keep this project alive.
+
+CoffeeCup is a templating engine for [node.js](http://nodejs.org) and browsers that lets you to write your HTML templates in 100% pure [CoffeeScript](http://coffeescript.org).
 
 It was created in celebration of [whyday](http://whyday.org/), as an application of the concept used in [Markaby](https://github.com/markaby/markaby) ("Markup as Ruby", by Tim Fletcher and why the lucky stiff) to CoffeeScript.
 
-Here's what a template written for CoffeeKup looks like:
+Here's what a template written for CoffeeCup looks like:
 
     doctype 5
     html ->
@@ -218,7 +222,7 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 - [Mailing list](https://groups.google.com/group/coffeekup)
 
-- [Issues](https://github.com/mauricemach/coffeekup/issues)
+- [Issues](https://github.com/gradus/coffeecup/issues)
 
 - **IRC**: #coffeekup on irc.freenode.net
 

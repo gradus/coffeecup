@@ -1,4 +1,4 @@
-# **CoffeeKup** lets you to write HTML templates in 100% pure
+# **CoffeeCup** lets you to write HTML templates in 100% pure
 # [CoffeeScript](http://coffeescript.org).
 # 
 # You can run it on [node.js](http://nodejs.org) or the browser, or compile your
@@ -10,7 +10,7 @@
 # stiff.
 
 if window?
-  coffeekup = window.CoffeeKup = {}
+  coffeekup = window.coffeekup = {}
   coffee = if CoffeeScript? then CoffeeScript else null
 else
   coffeekup = exports
@@ -103,7 +103,7 @@ skeleton = (data = {}) ->
   # basis with the `h` function.
   data.autoescape ?= off
 
-  # Internal CoffeeKup stuff.
+  # Internal coffeekup stuff.
   __ck =
     buffer: []
       
@@ -349,7 +349,7 @@ coffeekup.render = (template, data = {}, options = {}) ->
 
 unless window?
   coffeekup.adapters =
-    # Legacy adapters for when CoffeeKup expected data in the `context` attribute.
+    # Legacy adapters for when coffeekup expected data in the `context` attribute.
     simple: coffeekup.render
     meryl: coffeekup.render
     

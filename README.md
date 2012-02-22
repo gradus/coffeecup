@@ -5,6 +5,8 @@ This is a clone of @mauricemach [CoffeeKup](https://github.com/mauricemach/coffe
 
 I am renaming and trying to keep this project alive.
 
+[Fork CoffeeCup on Github](https://github.com/gradus/coffeecup).
+
 CoffeeCup is a templating engine for [node.js](http://nodejs.org) and browsers that lets you to write your HTML templates in 100% pure [CoffeeScript](http://coffeescript.org).
 
 It was created in celebration of [whyday](http://whyday.org/), as an application of the concept used in [Markaby](https://github.com/markaby/markaby) ("Markup as Ruby", by Tim Fletcher and why the lucky stiff) to CoffeeScript.
@@ -220,11 +222,7 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 - [API reference](https://github.com/gradus/coffeekup/blob/master/docs/reference.md)
 
-- [Mailing list](https://groups.google.com/group/coffeekup)
-
 - [Issues](https://github.com/gradus/coffeecup/issues)
-
-- **IRC**: #coffeekup on irc.freenode.net
 
 - [A Beginners's Introduction to CoffeeKup](https://github.com/mark-hahn/coffeekup-intro)
 
@@ -256,7 +254,7 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 ## Compatibility
 
-Latest version tested with node 0.4.9 and CoffeeScript 1.1.1.
+Latest version tested with node 0.6.11 and CoffeeScript 1.1.2.
 
 ## Special thanks
 

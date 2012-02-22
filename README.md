@@ -1,7 +1,7 @@
 # CoffeeCup <☕/>
 ## Markup as CoffeeScript
 
-This is a clone of @mauricemach [CoffeeKup](https://github.com/mauricemach/coffeekup).
+This is a clone of @mauricemach [CoffeeCup](https://github.com/mauricemach/coffeekup).
 
 I am renaming and trying to keep this project alive.
 
@@ -73,7 +73,7 @@ Interactive demo at [coffeekup.org](http://coffeekup.org).
 
 ## _why?
 
-- **One language to rule them all**. JavaScript is everywhere, thus so is CoffeeScript. Servers, browsers, even databases. If extending this to rendering logic and UI structure (server and client side) is desirable to you, CoffeeKup is your friend.
+- **One language to rule them all**. JavaScript is everywhere, thus so is CoffeeScript. Servers, browsers, even databases. If extending this to rendering logic and UI structure (server and client side) is desirable to you, CoffeeCup is your friend.
 
 - **More specifically, one _outstanding_ language**. CoffeeScript is one hell of a clean, expressive, flexible and powerful language. It's hard to find such combination, especially if you need it to run in the browser too.
 
@@ -99,11 +99,11 @@ Interactive demo at [coffeekup.org](http://coffeekup.org).
 
 ## Why not?
 
-CoffeeKup may not be your best choice in those cases:
+CoffeeCup may not be your best choice in those cases:
 
 - You're after the cleanest syntax possible, above all. In this regard a specialized language such as [Jade](http://jade-lang.com) just can't be beaten.
 
-- You use divs and/or classes for everything. While in CoffeeKup you can do `div '#id.class.class'`, specialized languages often have an even shorter syntax for that.
+- You use divs and/or classes for everything. While in CoffeeCup you can do `div '#id.class.class'`, specialized languages often have an even shorter syntax for that.
 
 - You want CoffeeScript for rendering logic, but you'd rather stick with HTML for markup. Then you're looking for [Eco](http://github.com/sstephenson/eco).
 
@@ -149,7 +149,7 @@ Defining variables:
         attrs.name = attrs.id
         input attrs
 
-    ck.render(template, title: 'Log In', hardcode: helpers)
+    cc.render(template, title: 'Log In', hardcode: helpers)
 
 Precompiling to functions:
 
@@ -211,7 +211,7 @@ Command-line:
       -p, --print        print the compiled html to stdout
       -f, --format       apply line breaks and indentation to html output
       -u, --utils        add helper locals (currently only "render")
-      -v, --version      display CoffeeKup version
+      -v, --version      display CoffeeCup version
       -h, --help         display this help message
 
 See [/examples](http://github.com/gradus/coffeekup/tree/master/examples) for complete versions (you have to run `cake build` first).
@@ -224,19 +224,19 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 - [Issues](https://github.com/gradus/coffeecup/issues)
 
-- [A Beginners's Introduction to CoffeeKup](https://github.com/mark-hahn/coffeekup-intro)
+- [A Beginners's Introduction to CoffeeCup](https://github.com/mark-hahn/coffeekup-intro)
 
 ## Tools
 
-- [html2coffeekup](https://github.com/brandonbloom/html2coffeekup) - Converts HTML to CoffeeKup templates.
+- [html2coffeekup](https://github.com/brandonbloom/html2coffeekup) - Converts HTML to CoffeeCup templates.
 
 - [htmlkup](https://github.com/colinta/htmlkup) - Another HTML converter, stdin/stdout based.
 
-- [ice](https://github.com/ludicast/ice) - CoffeeKup and Eco in Rails ([screencast](http://vimeo.com/25907220)).
+- [ice](https://github.com/ludicast/ice) - CoffeeCup and Eco in Rails ([screencast](http://vimeo.com/25907220)).
 
-- [coffee-world](https://github.com/khoomeister/coffee-world) - Tool to watch and compile HTML with CoffeeKup, CSS with coffee-css and JS with CoffeeScript.
+- [coffee-world](https://github.com/khoomeister/coffee-world) - Tool to watch and compile HTML with CoffeeCup, CSS with coffee-css and JS with CoffeeScript.
 
-- [cupcake](https://github.com/twilson63/cupcake) - Express app generator with CoffeeKup support.
+- [cupcake](https://github.com/twilson63/cupcake) - Express app generator with CoffeeCup support.
 
 ## Related projects
 

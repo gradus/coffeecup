@@ -10,17 +10,17 @@
 # stiff.
 
 if window?
-  coffeekup = window.coffeekup = {}
+  coffeecup = window.coffeecup = {}
   coffee = if CoffeeScript? then CoffeeScript else null
 else
-  coffeekup = exports
+  coffeecup = exports
   coffee = require 'coffee-script'
 
-coffeekup.version = '0.3.1edge'
+coffeecup.version = '0.3.1edge'
 
 # Values available to the `doctype` function inside a template.
 # Ex.: `doctype 'strict'`
-coffeekup.doctypes =
+coffeecup.doctypes =
   'default': '<!DOCTYPE html>'
   '5': '<!DOCTYPE html>'
   'xml': '<?xml version="1.0" encoding="utf-8" ?>'
@@ -86,13 +86,13 @@ merge_elements = (args...) ->
 # Public/customizable list of possible elements.
 # For each name in this list that is also present in the input template code,
 # a function with the same name will be added to the compiled template.
-coffeekup.tags = merge_elements 'regular', 'obsolete', 'void', 'obsolete_void'
+coffeecup.tags = merge_elements 'regular', 'obsolete', 'void', 'obsolete_void'
 
 # Public/customizable list of elements that should be rendered self-closed.
-coffeekup.self_closing = merge_elements 'void', 'obsolete_void'
+coffeecup.self_closing = merge_elements 'void', 'obsolete_void'
 
 # This is the basic material from which compiled templates will be formed.
-# It will be manipulated in its string form at the `coffeekup.compile` function
+# It will be manipulated in its string form at the `coffeecup.compile` function
 # to generate the final template function. 
 skeleton = (data = {}) ->
   # Whether to generate formatted HTML with indentation and line breaks, or
@@ -103,7 +103,7 @@ skeleton = (data = {}) ->
   # basis with the `h` function.
   data.autoescape ?= off
 
-  # Internal coffeekup stuff.
+  # Internal coffeecup stuff.
   __ck =
     buffer: []
       
@@ -274,7 +274,7 @@ skeleton = String(skeleton)
 skeleton = coffeescript_helpers + skeleton
 
 # Compiles a template into a standalone JavaScript function.
-coffeekup.compile = (template, options = {}) ->
+coffeecup.compile = (template, options = {}) ->
   # The template can be provided as either a function or a CoffeeScript string
   # (in the latter case, the CoffeeScript compiler must be available).
   if typeof template is 'function' then template = String(template)
@@ -299,7 +299,7 @@ coffeekup.compile = (template, options = {}) ->
   tag_functions = ''
   tags_used = []
   
-  for t in coffeekup.tags
+  for t in coffeecup.tags
     if template.indexOf(t) > -1 or hardcoded_locals.indexOf(t) > -1
       tags_used.push t
   
@@ -313,9 +313,9 @@ coffeekup.compile = (template, options = {}) ->
   # If bare is used, the main mechanism is stripped from template
   unless options.bare && !options.core
     code += tag_functions + hardcoded_locals + skeleton
-    code += "__ck.doctypes = #{JSON.stringify coffeekup.doctypes};"
+    code += "__ck.doctypes = #{JSON.stringify coffeecup.doctypes};"
     code += "__ck.coffeescript_helpers = #{JSON.stringify coffeescript_helpers};"
-    code += "__ck.self_closing = #{JSON.stringify coffeekup.self_closing};"
+    code += "__ck.self_closing = #{JSON.stringify coffeecup.self_closing};"
   
   unless options.core && !options.bare
     # If `locals` is set, wrap the template inside a `with` block. This is the
@@ -329,7 +329,7 @@ coffeekup.compile = (template, options = {}) ->
 
 cache = {}
 
-# Template in, HTML out. Accepts functions or strings as does `coffeekup.compile`.
+# Template in, HTML out. Accepts functions or strings as does `coffeecup.compile`.
 # 
 # Accepts an option `cache`, by default `false`. If set to `false` templates will
 # be recompiled each time.
@@ -338,20 +338,20 @@ cache = {}
 # data, but the two will be merged and passed down to the compiler (which uses
 # `locals` and `hardcode`), and the template (which understands `locals`, `format`
 # and `autoescape`).
-coffeekup.render = (template, data = {}, options = {}) ->
+coffeecup.render = (template, data = {}, options = {}) ->
   data[k] = v for k, v of options
   data.cache ?= off
 
   if data.cache and cache[template]? then tpl = cache[template]
-  else if data.cache then tpl = cache[template] = coffeekup.compile(template, data)
-  else tpl = coffeekup.compile(template, data)
+  else if data.cache then tpl = cache[template] = coffeecup.compile(template, data)
+  else tpl = coffeecup.compile(template, data)
   tpl(data)
 
 unless window?
-  coffeekup.adapters =
-    # Legacy adapters for when coffeekup expected data in the `context` attribute.
-    simple: coffeekup.render
-    meryl: coffeekup.render
+  coffeecup.adapters =
+    # Legacy adapters for when coffeecup expected data in the `context` attribute.
+    simple: coffeecup.render
+    meryl: coffeecup.render
     
     express:
       TemplateError: class extends Error
@@ -367,7 +367,7 @@ unless window?
           text @partial.apply @, arguments
         
         TemplateError = @TemplateError
-        try tpl = coffeekup.compile(template, data)
+        try tpl = coffeecup.compile(template, data)
         catch e then throw new TemplateError "Error compiling #{data.filename}: #{e.message}"
         
         return ->

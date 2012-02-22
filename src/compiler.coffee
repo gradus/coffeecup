@@ -1,11 +1,11 @@
 coffee = require 'coffee-script'
 {uglify, parser} = require 'uglify-js'
-coffeekup = null
+coffeecup = null
 
 # Call this from the main script so that the compiler module can have access to
-# coffeekup exports (node does not allow circular imports).
+# coffeecup exports (node does not allow circular imports).
 exports.setup = (ck) ->
-  coffeekup = ck
+  coffeecup = ck
 
 skeleton = '''
   var __ck = {
@@ -134,12 +134,12 @@ exports.compile = (source, hardcoded_locals, options) ->
         code = new Code w.parent()
         if args.length > 0
           doctype = String(args[0][1])
-          if doctype of coffeekup.doctypes
-            code.append coffeekup.doctypes[doctype]
+          if doctype of coffeecup.doctypes
+            code.append coffeecup.doctypes[doctype]
           else
             throw new Error 'Invalid doctype'
         else
-          code.append coffeekup.doctypes.default
+          code.append coffeecup.doctypes.default
         return code.get_nodes()
 
       else if name is 'comment'
@@ -166,7 +166,7 @@ exports.compile = (source, hardcoded_locals, options) ->
         code.append '<![endif]-->'
         return code.get_nodes()
 
-      else if name in coffeekup.tags or name in ['tag', 'coffeescript']
+      else if name in coffeecup.tags or name in ['tag', 'coffeescript']
         if name is 'tag'
           name = args.shift()[1]
 
@@ -311,13 +311,13 @@ exports.compile = (source, hardcoded_locals, options) ->
             else
               contents = escape w.walk arg
 
-        if name in coffeekup.self_closing
+        if name in coffeecup.self_closing
           code.append ' />'
         else
           code.append '>'
     
         code.push contents if contents?
-        if not (name in coffeekup.self_closing)
+        if not (name in coffeecup.self_closing)
           code.append "</#{name}>"
 
         return code.get_nodes()

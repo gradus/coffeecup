@@ -166,8 +166,8 @@ tests =
     template: "p \"This text could use \#{yield -> strong -> a href: '/', 'a link'}.\""
     expected: '<p>This text could use <strong><a href="/">a link</a></strong>.</p>'
 
-ck = require './src/coffeekup'
-render = ck.render
+cc = require './src/coffeecup'
+render = cc.render
 
 @run = ->
   {print} = require 'sys'

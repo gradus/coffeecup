@@ -1,13 +1,13 @@
 #!/usr/bin/env coffee
 
-coffeekup = require './src/coffeekup'
+coffeecup = require './src/coffeecup'
 jade = require 'jade'
 ejs = require 'ejs'
 eco = require 'eco'
 haml = require 'haml'
 log = console.log
 
-data = 
+data =
   title: 'test'
   inspired: no
   users: [
@@ -16,7 +16,7 @@ data =
     {email: 'wilson@gmail.com', name: 'wilson'}
   ]
 
-coffeekup_template = ->
+coffeecup_template = ->
   doctype 5
   html lang: 'en', ->
     head ->
@@ -39,7 +39,7 @@ coffeekup_template = ->
             li user.name
             li -> a href: "mailto:#{user.email}", -> user.email
 
-coffeekup_string_template = """
+coffeecup_string_template = """
   doctype 5
   html lang: 'en', ->
     head ->
@@ -63,9 +63,9 @@ coffeekup_string_template = """
             li -> a href: "mailto:\#{user.email}", -> user.email
 """
 
-coffeekup_compiled_template = coffeekup.compile coffeekup_template
+coffeecup_compiled_template = coffeecup.compile coffeecup_template
 
-coffeekup_optimized_template = coffeekup.compile coffeekup_template, optimize: yes
+coffeecup_optimized_template = coffeecup.compile coffeecup_template, optimize: yes
 
 jade_template = '''
   !!! 5
@@ -192,24 +192,24 @@ benchmark = (title, code) ->
   log "#{title}: #{new Date - start} ms"
 
 
-benchmark 'CoffeeKup (precompiled)', -> coffeekup_compiled_template data
-benchmark 'CoffeeKup (precompiled, optimized)', -> coffeekup_optimized_template data
+benchmark 'coffeecup (precompiled)', -> coffeecup_compiled_template data
+benchmark 'coffeecup (precompiled, optimized)', -> coffeecup_optimized_template data
 benchmark 'Jade (precompiled)', -> jade_compiled_template data
 benchmark 'haml-js (precompiled)', -> haml_template_compiled data
 benchmark 'Eco (precompiled)', -> eco_compiled_template data
 
 console.log '\n'
 
-benchmark 'CoffeeKup (function, cache on)', -> coffeekup.render coffeekup_template, data, cache: on
-benchmark 'CoffeeKup (string, cache on)', -> coffeekup.render coffeekup_string_template, data, cache: on
+benchmark 'coffeecup (function, cache on)', -> coffeecup.render coffeecup_template, data, cache: on
+benchmark 'coffeecup (string, cache on)', -> coffeecup.render coffeecup_string_template, data, cache: on
 #benchmark 'Jade (cache on)', -> jade.render jade_template, locals: data, cache: on, filename: 'test'
 benchmark 'ejs (cache on)', -> ejs.render ejs_template, locals: data, cache: on, filename: 'test'
 benchmark 'Eco', -> eco.render eco_template, data
 
 console.log '\n'
 
-benchmark 'CoffeeKup (function, cache off)', -> coffeekup.render coffeekup_template, data, cache: off
-benchmark 'CoffeeKup (string, cache off)', -> coffeekup.render coffeekup_string_template, data, cache: off
+benchmark 'coffeecup (function, cache off)', -> coffeecup.render coffeecup_template, data, cache: off
+benchmark 'coffeecup (string, cache off)', -> coffeecup.render coffeecup_string_template, data, cache: off
 #benchmark 'Jade (cache off)', -> jade.render jade_template, locals: data
 benchmark 'haml-js', -> haml.render haml_template, locals: data
 benchmark 'ejs (cache off)', -> ejs.render ejs_template, locals: data

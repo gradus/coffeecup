@@ -1,16 +1,34 @@
 {
-  "name": "coffeekup",
+  "name": "coffeecup",
   "description": "Markup as CoffeeScript.",
   "version": "0.3.1edge",
   "author": "Maurice Machado <maurice@bitbending.com>",
   "homepage": "http://coffeekup.org",
-  "repository": {"type": "git", "url": "git://github.com/mauricemach/coffeekup.git"},
-  "dependencies": {"coffee-script": ">= 1.1.2"},
-  "devDependencies": {"jade": "0.13.0", "eco": "1.1.0-rc-1", "ejs": "0.4.3", "haml": "0.4.2"},
-  "keywords": ["template", "view", "coffeescript"],
-  "bin": "./bin/coffeekup",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gradus/coffeecup.git"
+  },
+  "dependencies": {
+    "coffee-script": ">= 1.1.2"
+  },
+  "devDependencies": {
+    "jade": "0.13.0",
+    "eco": "1.1.0-rc-1",
+    "ejs": "0.4.3",
+    "haml": "0.4.2"
+  },
+  "keywords": [
+    "template",
+    "view",
+    "coffeescript"
+  ],
+  "bin": {
+    "coffeecup": "./bin/coffeekup"
+  },
   "main": "./lib/coffeekup",
-  "engines": {"node": ">= 0.4.7"},
+  "engines": {
+    "node": ">= 0.4.7"
+  },
   "contributors": [
     "Luis Pedro Coelho <lpc@cmu.edu>",
     "Rachel Carvalho <rachel.carvalho@gmail.com>",
@@ -23,5 +41,6 @@
     "Jason King <jk@handle.it>",
     "Brandon Bloom <brandon@brandonbloom.name>",
     "Nicholas Kinsey <nicholas.kinsey@feistystudios.com>"
-  ]
+  ],
+  "optionalDependencies": {}
 }

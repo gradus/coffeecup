@@ -111,26 +111,26 @@ CoffeeKup may not be your best choice in those cases:
 
 Just grab [node.js](http://nodejs.org/#download) and [npm](http://github.com/isaacs/npm) and you're set:
 
-    npm install coffeekup
+    npm install coffeecup
 
-To get the `coffeekup` command, install it globally:
+To get the `coffeecup` command, install it globally:
 
-    npm install coffeekup -g
+    npm install coffeecup -g
     
 Or to use the latest version:
 
-    git clone git@github.com:mauricemach/coffeekup.git && cd coffeekup
+    git clone git@github.com:gradus/coffeecup.git && cd coffeecup
     cake build
     npm link
     cd ~/myproject
-    npm link coffeekup
+    npm link coffeecup
 
 ## Using
 
-    ck = require 'coffeekup'
+    cc = require 'coffeecup'
 
-    ck.render -> h1 "You can feed me templates as functions."
-    ck.render "h1 'Or strings. I am not too picky.'"
+    cc.render -> h1 "You can feed me templates as functions."
+    cc.render "h1 'Or strings. I am not too picky.'"
 
 Defining variables:
 
@@ -158,7 +158,7 @@ Precompiling to functions:
 With [express](http://expressjs.com):
 
     app.set 'view engine', 'coffee'
-    app.register '.coffee', require('coffeekup').adapters.express
+    app.register '.coffee', require('coffeecup').adapters.express
 
     app.get '/', (req, res) ->
       # Will render views/index.coffee:
@@ -176,7 +176,7 @@ With [zappa](http://github.com/mauricemach/zappa):
 
 With [meryl](https://github.com/kadirpekel/meryl/tree/master/examples/coffeekup-template):
 
-    coffeekup = require 'coffeekup'
+    coffeekup = require 'coffeecup'
     
     meryl.get '/', (req, resp) ->
       people = ['bob', 'alice', 'meryl']
@@ -184,7 +184,7 @@ With [meryl](https://github.com/kadirpekel/meryl/tree/master/examples/coffeekup-
 
     meryl.run
       templateExt: '.coffee'
-      templateFunc: coffeekup.adapters.meryl
+      templateFunc: coffeecup.adapters.meryl
 
 On the browser:
 
@@ -193,14 +193,14 @@ On the browser:
       $('body').append(templates.template({foo: 'bar'}));
     </script>
 
-This is one of many browser deployment possibilities, pre-compiling your template on the server to a standalone function. To see all serving suggestions, check out [regular](http://github.com/mauricemach/coffeekup/blob/master/examples/browser/regular/index.html), [decaf](http://github.com/mauricemach/coffeekup/blob/master/examples/browser/decaf/index.html) and [crème](http://github.com/mauricemach/coffeekup/blob/master/examples/browser/creme/index.html).
+This is one of many browser deployment possibilities, pre-compiling your template on the server to a standalone function. To see all serving suggestions, check out [regular](http://github.com/gradus/coffeecup/blob/master/examples/browser/regular/index.html), [decaf](http://github.com/gradus/coffeecup/blob/master/examples/browser/decaf/index.html) and [crème](http://github.com/gradus/coffeecup/blob/master/examples/browser/creme/index.html).
 
 Command-line:
 
-    $ coffeekup -h
+    $ coffeecup -h
 
     Usage:
-      coffeekup [options] path/to/template.coffee
+      coffeecup [options] path/to/template.coffee
 
           --js           compile template to js function
       -n, --namespace    global object holding the templates (default: "templates")
@@ -212,13 +212,13 @@ Command-line:
       -v, --version      display CoffeeKup version
       -h, --help         display this help message
 
-See [/examples](http://github.com/mauricemach/coffeekup/tree/master/examples) for complete versions (you have to run `cake build` first).
+See [/examples](http://github.com/gradus/coffeekup/tree/master/examples) for complete versions (you have to run `cake build` first).
 
 Please note that even though all examples are given in CoffeeScript, you can also use their plain JavaScript counterparts just fine.
 
 ## Resources
 
-- [API reference](https://github.com/mauricemach/coffeekup/blob/master/docs/reference.md)
+- [API reference](https://github.com/gradus/coffeekup/blob/master/docs/reference.md)
 
 - [Mailing list](https://groups.google.com/group/coffeekup)
 

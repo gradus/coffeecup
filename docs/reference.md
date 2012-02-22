@@ -1,12 +1,12 @@
-# CoffeeKup 0.3.1 Reference
+# coffeecup 0.3.1 Reference
 
-## The CoffeeKup object
+## The coffeecup object
 
-Both the returned value from `require 'coffeekup'` and the global `CoffeeKup` created by `<script src="coffeekup.js">` will have the following attributes:
+Both the returned value from `require 'coffeecup'` and the global `coffeecup` created by `<script src="coffeecup.js">` will have the following attributes:
 
 ### compile
 
-`CoffeeKup.compile(template, options)`
+`coffeecup.compile(template, options)`
 
 Compiles the template to a standalone function and returns it.
 
@@ -34,7 +34,7 @@ All attributes in `data` will be available to the template at `@` (`this`). Some
 
 ### render
 
-`CoffeeKup.render(template, data, options)`
+`coffeecup.render(template, data, options)`
 
 Compiles the template provided, runs it, and returns the resulting HTML string.
 
@@ -44,7 +44,7 @@ Options:
 
 ### version
 
-Version of CoffeeKup running.
+Version of coffeecup running.
 
 ### doctypes
 
@@ -62,7 +62,7 @@ List of self-closing tags. Array of strings, can be customized.
 
 ## The template scope
 
-CoffeeKup templates are CoffeeScript/JavaScript functions with certain special variables put in their local scope. These are usually functions, which will write their equivalent HTML to a buffer. The contents of this buffer will be the final return value of the template.
+coffeecup templates are CoffeeScript/JavaScript functions with certain special variables put in their local scope. These are usually functions, which will write their equivalent HTML to a buffer. The contents of this buffer will be the final return value of the template.
 
 ### Tag functions
 
@@ -150,7 +150,7 @@ ID/class shortcut
 
 #### doctype
 
-Writes the doctype. Usage: `doctype()` (picks the default), `doctype 'xml'` (specifying). You can see and modify the list of doctypes at `CoffeeKup.doctypes`.
+Writes the doctype. Usage: `doctype()` (picks the default), `doctype 'xml'` (specifying). You can see and modify the list of doctypes at `coffeecup.doctypes`.
 
 #### comment
 
@@ -207,7 +207,7 @@ Without it, the `a` function runs first, writes to the buffer and returns `null`
 
 CoffeeScript shortcut to `this`. This is where all the input data can be accessed.
 
-## Extending CoffeeKup
+## Extending coffeecup
 
     template = ->
       h1 @title
@@ -222,16 +222,16 @@ CoffeeScript shortcut to `this`. This is where all the input data can be accesse
         attrs.name = attrs.id
         input attrs
 
-    console.log CoffeeKup.render template, title: 'Log In', hardcode: helpers
+    console.log coffeecup.render template, title: 'Log In', hardcode: helpers
 
-## The coffeekup command
+## The coffeecup command
 
-When installing CoffeeKup with `npm install coffeekup -g`, you get a `coffeekup` command that allows you to generate HTML from CoffeeKup templates:
+When installing coffeecup with `npm install coffeecup -g`, you get a `coffeecup` command that allows you to generate HTML from coffeecup templates:
 
-    $ coffeekup -h
+    $ coffeecup -h
 
     Usage:
-      coffeekup [options] path/to/template.coffee
+      coffeecup [options] path/to/template.coffee
 
           --js           compile template to js function
       -n, --namespace    global object holding the templates (default: "templates")
@@ -240,5 +240,5 @@ When installing CoffeeKup with `npm install coffeekup -g`, you get a `coffeekup`
       -p, --print        print the compiled html to stdout
       -f, --format       apply line breaks and indentation to html output
       -u, --utils        add helper locals (currently only "render")
-      -v, --version      display CoffeeKup version
+      -v, --version      display coffeecup version
       -h, --help         display this help message

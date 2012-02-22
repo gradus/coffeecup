@@ -17,7 +17,7 @@ else
 render = (input_path, output_directory) ->
   fs.readFile input_path, (err, contents) ->
     throw err if err
-    html = coffeekup.render String(contents), options
+    html = coffeecup.render String(contents), options
     write input_path, html, output_directory
 
 write = (input_path, html, output_directory) ->
@@ -35,7 +35,7 @@ write = (input_path, html, output_directory) ->
 
 usage = '''
   Usage:
-    coffeekup [options] path/to/template.coffee
+    coffeecup [options] path/to/template.coffee
 '''
 
 switches = [
@@ -44,7 +44,7 @@ switches = [
   ['-p', '--print', 'print the compiled html to stdout']
   ['-f', '--format', 'apply line breaks and indentation to html output']
   ['-u', '--utils', 'add helper locals (currently only "render")']
-  ['-v', '--version', 'display CoffeeKup version']
+  ['-v', '--version', 'display coffeecup version']
   ['-h', '--help', 'display this help message']
 ]
 
@@ -78,7 +78,7 @@ if options.utils
 if print_summary
 	puts parser.toString()
 else if print_version
-	puts coffeekup.version
+	puts coffeecup.version
 else if args.length > 0
 	file = args[0]
 

@@ -1,9 +1,9 @@
 app = require('express').createServer()
 
-coffeekup = require '../../src/coffeekup'
+coffeecup = require '../../src/coffeecup'
 
 app.set 'view engine', 'coffee'
-app.register '.coffee', coffeekup.adapters.express
+app.register '.coffee', coffeecup.adapters.express
 
 app.get '/', (req, res) ->
   res.render 'index'
@@ -12,7 +12,7 @@ app.get '/login', (req, res) ->
   res.render 'login', foo: 'bar', locals: {ping: 'pong'}
 
 app.get '/inline', (req, res) ->
-  res.send coffeekup.render ->
+  res.send coffeecup.render ->
     h1 'This is an inline template.'
 
 app.listen 3000

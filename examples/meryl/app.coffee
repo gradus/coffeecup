@@ -1,5 +1,5 @@
 meryl = require 'meryl'
-coffeekup = require '../../src/coffeekup'
+coffeecup = require '../../src/coffeecup'
 
 meryl.h 'GET /', (req, resp) ->
   people = ['bob', 'alice', 'meryl']
@@ -8,6 +8,6 @@ meryl.h 'GET /', (req, resp) ->
 meryl.run
   templateDir: 'templates'
   templateExt: '.coffee'
-  templateFunc: coffeekup.adapters.meryl
+  templateFunc: coffeecup.adapters.meryl
 
 console.log 'Listening on 3000...'

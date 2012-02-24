@@ -191,7 +191,6 @@ benchmark = (title, code) ->
     code()
   log "#{title}: #{new Date - start} ms"
 
-
 benchmark 'coffeecup (precompiled)', -> coffeecup_compiled_template data
 benchmark 'coffeecup (precompiled, optimized)', -> coffeecup_optimized_template data
 benchmark 'Jade (precompiled)', -> jade_compiled_template data
@@ -213,4 +212,3 @@ benchmark 'coffeecup (string, cache off)', -> coffeecup.render coffeecup_string_
 #benchmark 'Jade (cache off)', -> jade.render jade_template, locals: data
 benchmark 'haml-js', -> haml.render haml_template, locals: data
 benchmark 'ejs (cache off)', -> ejs.render ejs_template, locals: data
-

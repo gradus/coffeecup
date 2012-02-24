@@ -1,7 +1,7 @@
 {
   "name": "coffeecup",
   "description": "Markup as CoffeeScript.",
-  "version": "0.3.5",
+  "version": "0.3.5-1",
   "author": "Kris Windham <kriswindham@gmail.com>",
   "homepage": "http://coffeecup-docs.nodejitsu.com/",
   "repository": {
@@ -31,7 +31,7 @@
     "node": ">= 0.4.7"
   },
   "contributors": [
-    "Kris Windham <kriswindham@gmail.com",
+    "Kris Windham",
     "Luis Pedro Coelho <lpc@cmu.edu>",
     "Rachel Carvalho <rachel.carvalho@gmail.com>",
     "Vladimir Dronnikov <dronnikov@gmail.com>",

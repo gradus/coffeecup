@@ -18,7 +18,7 @@ else
   compiler = require __dirname + '/compiler'
   compiler.setup coffeecup
 
-coffeecup.version = '0.3.1edge'
+coffeecup.version = '0.3.5-2'
 
 # Values available to the `doctype` function inside a template.
 # Ex.: `doctype 'strict'`
@@ -101,7 +101,7 @@ merge_elements = (args...) ->
 # Public/customizable list of possible elements.
 # For each name in this list that is also present in the input template code,
 # a function with the same name will be added to the compiled template.
-coffeekup.tags = merge_elements 'regular', 'obsolete', 'void', 'obsolete_void',
+coffeecup.tags = merge_elements 'regular', 'obsolete', 'void', 'obsolete_void',
   'svg'
 
 # Public/customizable list of elements that should be rendered self-closed.

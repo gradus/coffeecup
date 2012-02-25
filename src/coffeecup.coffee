@@ -173,17 +173,18 @@ skeleton = (data = {}) ->
           # strings, numbers, arrays and functions are rendered "as is".
           text " #{prefix + k}=\"#{@esc(v)}\""
 
-    render_contents: (contents) ->
+    render_contents: (contents, safe) ->
+      safe ?= false
       switch typeof contents
         when 'string', 'number', 'boolean'
-          text @esc(contents)
+          text if safe then contents else @esc(contents)
         when 'function'
           text '\n' if data.format
           @tabs++
           result = contents.call data
           if typeof result is 'string'
             @indent()
-            text @esc(result)
+            text if safe then result else @esc(result)
             text '\n' if data.format
           @tabs--
           @indent()

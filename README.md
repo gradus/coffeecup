@@ -258,7 +258,7 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 ## Compatibility
 
-Latest version tested with node 0.6.11 and CoffeeScript 1.1.2.
+Latest version tested with node 0.6.11 and CoffeeScript 1.2.0.
 
 ## Special thanks
 

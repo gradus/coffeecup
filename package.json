@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "coffee-script": ">= 1.2.0",
-    "optparse": ">= 1.0.3"
+    "optparse": ">= 1.0.3",
+    "uglify-js": "*"
   },
   "devDependencies": {
     "jade": "0.13.0",

@@ -224,6 +224,8 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 - [Issues](https://github.com/gradus/coffeecup/issues)
 
+- [Google Group](https://groups.google.com/forum/#!forum/coffeecup_)
+
 - [A Beginners's Introduction to CoffeeCup](https://github.com/mark-hahn/coffeekup-intro)
 
 ## Tools

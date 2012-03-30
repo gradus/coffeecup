@@ -17,7 +17,9 @@
     "jade": "0.13.0",
     "eco": "1.1.0-rc-1",
     "ejs": "0.4.3",
-    "haml": "0.4.2"
+    "haml": "0.4.2",
+    "mocha": "0.14.x",
+    "should": "0.6.x"
   },
   "keywords": [
     "template",
@@ -29,7 +31,10 @@
   },
   "main": "./lib/coffeecup",
   "engines": {
-    "node": ">= 0.4.7"
+    "node": ">= 0.6.7"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "contributors": [
     "Kris Windham <kriswindham@gmail.com>",

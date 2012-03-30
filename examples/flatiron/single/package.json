@@ -1,0 +1,20 @@
+{
+  "author": "Tom Wilson <@twilson63> (twilson63)",
+  "name": "single",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gradus/coffeecup.git"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": "0.6 || 0.7"
+  },
+  "dependencies": {
+    "flatiron": "*",
+    "union": "*",
+    "creamer": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}

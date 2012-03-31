@@ -18,7 +18,7 @@ else
   compiler = require __dirname + '/compiler'
   compiler.setup coffeecup
 
-coffeecup.version = '0.3.5-2'
+coffeecup.version = '0.3.6'
 
 # Values available to the `doctype` function inside a template.
 # Ex.: `doctype 'strict'`
@@ -120,7 +120,7 @@ skeleton = (data = {}) ->
   data.autoescape ?= off
 
   # Internal coffeecup stuff.
-  __ck =
+  __cc =
     buffer: []
 
     esc: (txt) ->
@@ -227,14 +227,14 @@ skeleton = (data = {}) ->
             else
               contents = a
 
-    __ck.render_tag(name, idclass, attrs, contents)
+    __cc.render_tag(name, idclass, attrs, contents)
 
   yield = (f) ->
     temp_buffer = []
-    old_buffer = __ck.buffer
-    __ck.buffer = temp_buffer
+    old_buffer = __cc.buffer
+    __cc.buffer = temp_buffer
     f()
-    __ck.buffer = old_buffer
+    __cc.buffer = old_buffer
     temp_buffer.join ''
 
   h = (txt) ->
@@ -244,11 +244,11 @@ skeleton = (data = {}) ->
       .replace(/"/g, '&quot;')
 
   doctype = (type = 'default') ->
-    text __ck.doctypes[type]
+    text __cc.doctypes[type]
     text '\n' if data.format
 
   text = (txt) ->
-    __ck.buffer.push String(txt)
+    __cc.buffer.push String(txt)
     null
 
   comment = (cmt) ->
@@ -260,7 +260,7 @@ skeleton = (data = {}) ->
       # `coffeescript -> alert 'hi'` becomes:
       # `<script>;(function () {return alert('hi');})();</script>`
       when 'function'
-        script "#{__ck.coffeescript_helpers}(#{param}).call(this);"
+        script "#{__cc.coffeescript_helpers}(#{param}).call(this);"
       # `coffeescript "alert 'hi'"` becomes:
       # `<script type="text/coffeescript">alert 'hi'</script>`
       when 'string'
@@ -273,10 +273,10 @@ skeleton = (data = {}) ->
 
   # Conditional IE comments.
   ie = (condition, contents) ->
-    __ck.indent()
+    __cc.indent()
 
     text "<!--[if #{condition}]>"
-    __ck.render_contents(contents)
+    __cc.render_contents(contents)
     text "<![endif]-->"
     text '\n' if data.format
 
@@ -327,21 +327,21 @@ coffeecup.compile = (template, options = {}) ->
 
   tag_functions += "var #{tags_used.join ','};"
   for t in tags_used
-    tag_functions += "#{t} = function(){return __ck.tag('#{t}', arguments);};"
+    tag_functions += "#{t} = function(){return __cc.tag('#{t}', arguments);};"
 
   # Main function assembly.
   code = tag_functions + hardcoded_locals + skeleton
 
-  code += "__ck.doctypes = #{JSON.stringify coffeecup.doctypes};"
-  code += "__ck.coffeescript_helpers = #{JSON.stringify coffeescript_helpers};"
-  code += "__ck.self_closing = #{JSON.stringify coffeecup.self_closing};"
+  code += "__cc.doctypes = #{JSON.stringify coffeecup.doctypes};"
+  code += "__cc.coffeescript_helpers = #{JSON.stringify coffeescript_helpers};"
+  code += "__cc.self_closing = #{JSON.stringify coffeecup.self_closing};"
 
   # If `locals` is set, wrap the template inside a `with` block. This is the
   # most flexible but slower approach to specifying local variables.
   code += 'with(data.locals){' if options.locals
   code += "(#{template}).call(data);"
   code += '}' if options.locals
-  code += "return __ck.buffer.join('');"
+  code += "return __cc.buffer.join('');"
 
   new Function('data', code)
 

@@ -4,18 +4,18 @@ coffeecup = null
 
 # Call this from the main script so that the compiler module can have access to
 # coffeecup exports (node does not allow circular imports).
-exports.setup = (ck) ->
-  coffeecup = ck
+exports.setup = (cc) ->
+  coffeecup = cc
 
 skeleton = '''
-  var __ck = {
+  var __cc = {
     buffer: ''
   };
   var text = function(txt) {
     if (typeof txt === 'string' || txt instanceof String) {
-      __ck.buffer += txt;
+      __cc.buffer += txt;
     } else if (typeof txt === 'number' || txt instanceof Number) {
-      __ck.buffer += String(txt);
+      __cc.buffer += String(txt);
     }
   };
   var h = function(txt) {
@@ -32,11 +32,11 @@ skeleton = '''
   };
   var yield = function(f) {
     var temp_buffer = '';
-    var old_buffer = __ck.buffer;
-    __ck.buffer = temp_buffer;
+    var old_buffer = __cc.buffer;
+    __cc.buffer = temp_buffer;
     f();
-    temp_buffer = __ck.buffer;
-    __ck.buffer = old_buffer;
+    temp_buffer = __cc.buffer;
+    __cc.buffer = old_buffer;
     return temp_buffer;
   };
 
@@ -334,7 +334,7 @@ exports.compile = (source, hardcoded_locals, options) ->
   # Main function assembly.
   if options.locals
     compiled = "with(data.locals){#{compiled}}"
-  code = skeleton + compiled + "return __ck.buffer;"
+  code = skeleton + compiled + "return __cc.buffer;"
 
   return new Function 'data', code
 

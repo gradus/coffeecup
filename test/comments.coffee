@@ -1,0 +1,7 @@
+cc = require '../lib/coffeecup'
+
+describe 'Comments', ->
+  describe 'comment "Comment"', ->
+    it 'should render <!--Comment-->', ->
+      c = -> comment "Comment"
+      cc.render(c).should.equal '<!--Comment-->'

@@ -18,8 +18,8 @@
     "eco": "1.1.0-rc-1",
     "ejs": "0.4.3",
     "haml": "0.4.2",
-    "mocha": "0.14.x",
-    "should": "0.6.x"
+    "mocha": "1.0.0",
+    "should": "0.6.0"
   },
   "keywords": [
     "template",

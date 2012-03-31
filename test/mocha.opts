@@ -1,4 +1,4 @@
 --require should 
 --require coffee-script
 --colors
-
+--compilers coffee:coffee-script

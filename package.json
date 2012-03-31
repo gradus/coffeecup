@@ -17,7 +17,9 @@
     "jade": "0.13.0",
     "eco": "1.1.0-rc-1",
     "ejs": "0.4.3",
-    "haml": "0.4.2"
+    "haml": "0.4.2",
+    "should": "*",
+    "mocha": "*"    
   },
   "keywords": [
     "template",

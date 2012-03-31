@@ -1,0 +1,21 @@
+{
+  "author": "",
+  "name": "views",
+  "description": "A sample flatiron web app using coffeecup views",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gradus/coffeecup.git"
+  },
+  "engines": {
+    "node": "0.6 || 0.7"
+  },
+  "dependencies": {
+    "flatiron": "*",
+    "union": "*",
+    "creamer": "*",
+    "ecstatic": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}

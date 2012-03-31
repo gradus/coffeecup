@@ -11,10 +11,10 @@
     "node": "0.6 || 0.7"
   },
   "dependencies": {
-    "flatiron": "*",
+    "flatiron": "git://github.com/twilson63/flatiron.git",
     "union": "*",
     "creamer": "*",
-    "ecstatic": "*",
+    "ecstatic": "git://github.com/jesusabdullah/node-ecstatic.git",
     "resourceful": "*"
   },
   "devDependencies": {},

@@ -6,6 +6,15 @@ describe 'Context vars', ->
       v = -> h1 @foo
       cc.render(v, foo: 'bar').should.equal '<h1>bar</h1>'
 
+describe 'Local vars', ->
+  describe 'h1 "dynamic: " + obj.foo', ->
+    it 'should render <h1>dynamic: bar</h1>', ->
+      obj = {foo: 'bar'}
+      v = -> h1 "dynamic: " + obj.foo
+      cc.render(v, locals: {obj: obj}).should.equal '<h1>dynamic: bar</h1>'
+      obj.foo = 'baz'
+      cc.render(v, locals: {obj: obj}).should.equal '<h1>dynamic: baz</h1>'
+
 describe 'Local vars, hardcoded', ->
   describe 'h1 "harcoded: " + obj.foo', ->
     it 'should render <h1>harcoded: bar</h1>', ->

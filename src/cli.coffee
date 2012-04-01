@@ -1,7 +1,7 @@
 coffeecup = require './coffeecup'
 fs = require 'fs'
 path = require 'path'
-puts = console.log
+log = console.log
 {OptionParser} = require 'coffee-script/lib/coffee-script/optparse'
 
 argv = process.argv[2..]
@@ -40,8 +40,8 @@ write = (input_path, name, contents, output_directory, ext) ->
     contents = ' ' if contents.length <= 0
     fs.writeFile output_path, contents, (err) ->
       handle_error err
-      puts contents if options.print
-      puts "Compiled #{input_path}" if options.watch
+      log contents if options.print
+      log "Compiled #{input_path}" if options.watch
 
 usage = '''
   Usage:
@@ -68,8 +68,8 @@ switches = [
   args = options.arguments
   delete options.arguments
 
-  puts parser.help() if options.help or argv.length is 0
-  puts coffeecup.version if options.version
+  log parser.help() if options.help or argv.length is 0
+  log coffeecup.version if options.version
   if options.utils
     options.locals ?= {}
     options.locals.render = (file) ->
@@ -83,6 +83,6 @@ switches = [
       fs.watchFile file, {persistent: true, interval: 500}, (curr, prev) ->
         return if curr.size is prev.size and curr.mtime.getTime() is prev.mtime.getTime()
         compile file, options.output, options.js, options.namespace
-    
+
     compile file, options.output, options.js, options.namespace
 

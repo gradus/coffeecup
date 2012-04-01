@@ -7,40 +7,7 @@ coffeecup = null
 exports.setup = (cc) ->
   coffeecup = cc
 
-skeleton = '''
-  var __cc = {
-    buffer: ''
-  };
-  var text = function(txt) {
-    if (typeof txt === 'string' || txt instanceof String) {
-      __cc.buffer += txt;
-    } else if (typeof txt === 'number' || txt instanceof Number) {
-      __cc.buffer += String(txt);
-    }
-  };
-  var h = function(txt) {
-    var escaped;
-    if (typeof txt === 'string' || txt instanceof String) {
-      escaped = txt.replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-    } else {
-      escaped = txt;
-    }
-    return escaped;
-  };
-  var yield = function(f) {
-    var temp_buffer = '';
-    var old_buffer = __cc.buffer;
-    __cc.buffer = temp_buffer;
-    f();
-    temp_buffer = __cc.buffer;
-    __cc.buffer = old_buffer;
-    return temp_buffer;
-  };
-
-'''
+skeleton = require __dirname + '/skeleton'
 
 call_bound_func = (func) ->
   # function(){ <func> }.call(data)
@@ -315,7 +282,7 @@ exports.compile = (source, hardcoded_locals, options) ->
           code.append ' />'
         else
           code.append '>'
-    
+
         code.push contents if contents?
         if not (name in coffeecup.self_closing)
           code.append "</#{name}>"

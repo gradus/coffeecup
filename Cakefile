@@ -25,12 +25,12 @@ walk = (dir, done) ->
     return done(null, results) unless pending
     for name in list
       file = "#{dir}/#{name}"
-      try 
-        stat = fs.statSync file 
-      catch err 
+      try
+        stat = fs.statSync file
+      catch err
         stat = null
       if stat?.isDirectory()
-        walk file, (err, res) -> 
+        walk file, (err, res) ->
           results.push name for name in res
           done(null, results) unless --pending
       else
@@ -59,6 +59,26 @@ launch = (cmd, options=[], callback) ->
   app.stderr.pipe(process.stderr)
   app.on 'exit', (status) -> callback?() if status is 0
 
+# ## *build*
+#
+# **given** optional boolean as watch
+# **and** optional function as callback
+# **then** invoke launch passing coffee command
+# **and** defaulted options to compile src to lib
+build = (watch, callback) ->
+  if typeof watch is 'function'
+    callback = watch
+    watch = false
+
+  options = ['-c', '-b', '-o', 'lib', 'src']
+  options.unshift '-w' if watch
+  launch 'coffee', options, callback
+
+test = (callback) ->
+  spec = spawn './node_modules/mocha/bin/mocha'
+  spec.stdout.on 'data', (data) -> print data.toString()
+  spec.stderr.on 'data', (data) -> log data.toString(), red
+  spec.on 'exit', (status) -> callback?() if status is 0
 
 run = (args...) ->
   for a in args
@@ -75,21 +95,6 @@ run = (args...) ->
   cmd.stderr.on 'data', (data) -> process.stderr.write data
   process.on 'SIGHUP', -> cmd.kill()
   cmd.on 'exit', (code) -> callback() if callback? and code is 0
-
-# ## *build*
-#
-# **given** optional boolean as watch
-# **and** optional function as callback
-# **then** invoke launch passing coffee command
-# **and** defaulted options to compile src to lib
-build = (watch, callback) ->
-  if typeof watch is 'function'
-    callback = watch
-    watch = false
-
-  options = ['-c', '-b', '-o', 'lib', 'src']
-  options.unshift '-w' if watch
-  launch 'coffee', options, callback
 
 # ## *docco*
 #
@@ -133,7 +138,8 @@ task 'build', 'compile source', -> build -> log ":)", green
 # ```
 task 'watch', 'compile and watch', -> build true, -> log ":-)", green
 
-task 'test', -> require('./test').run()
+task 'test', ->
+  test -> console.log 'Done!'
 
 task 'bench', -> require('./benchmark').run()
 

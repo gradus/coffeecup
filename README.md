@@ -155,7 +155,7 @@ Defining variables:
 
 Precompiling to functions:
 
-    template = ck.compile(template, locals: yes, hardcode: {zig: 'zag'})
+    template = cc.compile(template, locals: yes, hardcode: {zig: 'zag'})
     
     template(foo: 'bar', locals: {ping: 'pong'})
 
@@ -238,6 +238,10 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 - [html2coffeecup-app](https://html2coffeecup.nodejitsu.com) - html to CoffeeCup web app.
 
+- [creamer](https://github.com/twilson63/creamer) - A flatiron plugin for coffeecup
+
+- [coffeecup-helpers](https://github.com/twilson63/coffeecup-helpers) - CoffeeCup Html Helpers
+
 - [ice](https://github.com/ludicast/ice) - CoffeeCup and Eco in Rails ([screencast](http://vimeo.com/25907220)).
 
 - [coffee-world](https://github.com/khoomeister/coffee-world) - Tool to watch and compile HTML with CoffeeCup, CSS with coffee-css and JS with CoffeeScript.
@@ -258,7 +262,10 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 - [ccss](https://github.com/aeosynth/ccss) - "CoffeeScript CSS".
 
+- [black-coffee](https://github.com/gradus/black-coffee) - Flatiron and Coffee-Script Template.
+
 - [iron-coffee](https://github.com/twilson63/iron-coffee) - Flatiron and Coffee-Script Template.
+
 
 ## Compatibility
 

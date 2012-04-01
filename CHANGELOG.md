@@ -1,4 +1,14 @@
-**v0.3.1edge** (unreleased):
+**v0.3.6** (2012-4-01):
+
+  - added support for SVG 1.1 tags
+  - fixed Cannot find module 'optparse'
+  - add uglify.js as dependency
+  - add safe helper
+  - works with coffeescript 1.2.x
+  - works with latest stable version of node 0.6.14
+  - moved skeleton into separate file
+  - rewrote all tests in mocha
+  - add creamer/flatiron examples
 
 **v0.3.1** (2011-09-29):
 

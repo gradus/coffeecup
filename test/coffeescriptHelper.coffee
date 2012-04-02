@@ -33,4 +33,16 @@ describe 'CoffeeScript helper (object)', ->
       h = -> coffeescript src: 'script.coffee'
       cc.render(h).should.equal '<script src="script.coffee" type="text/coffeescript"></script>'
 
+describe 'CoffeeScript helper (string) optimized', ->
+  describe 'coffeescript "alert \'hi\'\"',  ->
+    it 'should render <script type="text/coffeescript">alert \'hi\'</script>', ->
+      h = -> coffeescript "alert 'hi'"
+      cc.render(h, optimized: true).should.equal '<script type="text/coffeescript">alert \'hi\'</script>'
+
+describe 'CoffeeScript helper (object) optimized', ->
+  describe "coffeescript src: 'script.coffee'",  ->
+    it 'should render <script src="script.coffee" type="text/coffeescript"></script>', ->
+      h = -> coffeescript src: 'script.coffee'
+      cc.render(h, optimized: true).should.equal '<script src="script.coffee" type="text/coffeescript"></script>'
+
 

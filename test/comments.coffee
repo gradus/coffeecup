@@ -5,3 +5,9 @@ describe 'Comments', ->
     it 'should render <!--Comment-->', ->
       c = -> comment "Comment"
       cc.render(c).should.equal '<!--Comment-->'
+
+describe 'Comments', ->
+  describe 'comment "Comment"', ->
+    it 'should render <!--Comment-->', ->
+      c = -> comment "Comment"
+      cc.render(c, optimized: true).should.equal '<!--Comment-->'

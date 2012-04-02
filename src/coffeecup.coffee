@@ -18,7 +18,7 @@ else
   compiler = require __dirname + '/compiler'
   compiler.setup coffeecup
 
-coffeecup.version = '0.3.6'
+coffeecup.version = '0.3.7'
 
 # Values available to the `doctype` function inside a template.
 # Ex.: `doctype 'strict'`

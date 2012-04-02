@@ -66,7 +66,7 @@ tests =
     template: 'h1 "harcoded: " + obj.foo'
     run: ->
       obj = {foo: 'bar'}
-      @compiled = ck.compile(@template, hardcode: {obj})
+      @compiled = cc.compile(@template, hardcode: {obj})
       @expected = '<h1>harcoded: bar</h1>'
       @result = @compiled()
       @success = @result is @expected
@@ -193,7 +193,7 @@ render = cc.render
       if test.run
         test.run()
       else
-        test.result = ck.render(test.template, test.params)
+        test.result = cc.render(test.template, test.params)
         test.success = test.result is test.expected
         
       if test.success

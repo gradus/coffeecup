@@ -70,7 +70,7 @@ class Code
     if @block?
       @block.flush()
     else
-      @nodes.push @call ['string', @line]
+      @merge_text ['string', @line]
       @line = ''
 
   # Wrap subsequent calls to `text()` in an if block
@@ -97,7 +97,30 @@ class Code
     if @block?
       @block.push node
     else
-      @nodes.push @call node
+      @merge_text node
+
+  # Merge text() calls on the nodes
+  merge_text: (arg) ->
+    # Split up string concatenation inside text(), it slows down the template
+    if arg[0] is 'binary' and arg[1] is '+'
+      @merge_text arg[2]
+      arg = arg[3]
+
+    # Try to merge strings with previous text() calls
+    if l = @nodes.length
+      prev = @nodes[l-1]
+      # Test if previous node is a call to text()
+      if prev[0] is 'stat' and prev[1][0] is 'call' and prev[1][1][0] is 'name' and prev[1][1][1] is 'text'
+        oldArg = prev[1][2][0]
+        # Test if the previous and current calls are static strings - if so, combine
+        ok = ['string', 'num']
+        if oldArg[0] in ok and arg[0] in ok
+          prev[1][2][0] = [ 'string', oldArg[1] + arg[1] ]
+          return
+
+    # We can't combine - just add a call to text()
+    @nodes.push @call arg
+
 
   # If the parent statement ends with a semicolon and is not an argument
   # to a function, return the statements as separate nodes. Otherwise wrap them

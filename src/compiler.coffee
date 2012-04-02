@@ -15,7 +15,7 @@ skeleton = '''
     if (typeof txt === 'string' || txt instanceof String) {
       __cc.buffer += txt;
     } else if (typeof txt === 'number' || txt instanceof Number) {
-      __cc.buffer += String(txt);
+      __cc.buffer += txt.toString();
     }
   };
   var h = function(txt) {
@@ -156,7 +156,7 @@ exports.compile = (source, hardcoded_locals, options) ->
       if name is 'doctype'
         code = new Code w.parent()
         if args.length > 0
-          doctype = String(args[0][1])
+          doctype = args[0][1].toString()
           if doctype of coffeecup.doctypes
             code.append coffeecup.doctypes[doctype]
           else

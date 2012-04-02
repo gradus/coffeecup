@@ -1,5 +1,7 @@
 #!/usr/bin/env coffee
 
+ck = require "./src/coffeecup"
+
 tests =
   'Literal text':
     template: "text 'Just text'"
@@ -53,7 +55,7 @@ tests =
 
   'CoffeeScript helper (string)':
     template: "coffeescript \"alert 'hi'\""
-    expected: "<script>alert('hi');</script>"
+    expected: "<script>\nalert('hi');\n</script>"
 
   'Context vars':
     template: "h1 @foo"

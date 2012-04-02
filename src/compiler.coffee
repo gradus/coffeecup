@@ -7,7 +7,40 @@ coffeecup = null
 exports.setup = (cc) ->
   coffeecup = cc
 
-skeleton = require __dirname + '/skeleton'
+skeleton = '''
+  var __cc = {
+    buffer: ''
+  };
+  var text = function(txt) {
+    if (typeof txt === 'string' || txt instanceof String) {
+      __cc.buffer += txt;
+    } else if (typeof txt === 'number' || txt instanceof Number) {
+      __cc.buffer += txt.toString();
+    }
+  };
+  var h = function(txt) {
+    var escaped;
+    if (typeof txt === 'string' || txt instanceof String) {
+      escaped = txt.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    } else {
+      escaped = txt;
+    }
+    return escaped;
+  };
+  var yield = function(f) {
+    var temp_buffer = '';
+    var old_buffer = __cc.buffer;
+    __cc.buffer = temp_buffer;
+    f();
+    temp_buffer = __cc.buffer;
+    __cc.buffer = old_buffer;
+    return temp_buffer;
+  };
+
+'''
 
 call_bound_func = (func) ->
   # function(){ <func> }.call(data)
@@ -37,7 +70,7 @@ class Code
     if @block?
       @block.flush()
     else
-      @nodes.push @call ['string', @line]
+      @merge_text ['string', @line]
       @line = ''
 
   # Wrap subsequent calls to `text()` in an if block
@@ -64,7 +97,30 @@ class Code
     if @block?
       @block.push node
     else
-      @nodes.push @call node
+      @merge_text node
+
+  # Merge text() calls on the nodes
+  merge_text: (arg) ->
+    # Split up string concatenation inside text(), it slows down the template
+    if arg[0] is 'binary' and arg[1] is '+'
+      @merge_text arg[2]
+      arg = arg[3]
+
+    # Try to merge strings with previous text() calls
+    if l = @nodes.length
+      prev = @nodes[l-1]
+      # Test if previous node is a call to text()
+      if prev[0] is 'stat' and prev[1][0] is 'call' and prev[1][1][0] is 'name' and prev[1][1][1] is 'text'
+        oldArg = prev[1][2][0]
+        # Test if the previous and current calls are static strings - if so, combine
+        ok = ['string', 'num']
+        if oldArg[0] in ok and arg[0] in ok
+          prev[1][2][0] = [ 'string', oldArg[1] + arg[1] ]
+          return
+
+    # We can't combine - just add a call to text()
+    @nodes.push @call arg
+
 
   # If the parent statement ends with a semicolon and is not an argument
   # to a function, return the statements as separate nodes. Otherwise wrap them
@@ -100,7 +156,7 @@ exports.compile = (source, hardcoded_locals, options) ->
       if name is 'doctype'
         code = new Code w.parent()
         if args.length > 0
-          doctype = String(args[0][1])
+          doctype = args[0][1].toString()
           if doctype of coffeecup.doctypes
             code.append coffeecup.doctypes[doctype]
           else

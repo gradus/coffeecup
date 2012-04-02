@@ -58,6 +58,7 @@ switches = [
   ['-p', '--print', 'print the compiled html to stdout']
   ['-f', '--format', 'apply line breaks and indentation to html output']
   ['-u', '--utils', 'add helper locals (currently only "render")']
+  ['-z', '--optimize', 'optimize resulting JS']
   ['-v', '--version', 'display coffeecup version']
   ['-h', '--help', 'display this help message']
 ]

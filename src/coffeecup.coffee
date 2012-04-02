@@ -124,7 +124,7 @@ skeleton = (data = {}) ->
     buffer: []
 
     esc: (txt) ->
-      if data.autoescape then h(txt) else String(txt)
+      if data.autoescape then h(txt) else txt.toString()
 
     tabs: 0
 
@@ -238,7 +238,7 @@ skeleton = (data = {}) ->
     temp_buffer.join ''
 
   h = (txt) ->
-    String(txt).replace(/&/g, '&amp;')
+    txt.toString().replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
@@ -248,7 +248,7 @@ skeleton = (data = {}) ->
     text '\n' if data.format
 
   text = (txt) ->
-    __cc.buffer.push String(txt)
+    __cc.buffer.push txt.toString()
     null
 
   comment = (cmt) ->
@@ -284,7 +284,7 @@ skeleton = (data = {}) ->
 
 # Stringify the skeleton and unwrap it from its enclosing `function(){}`, then
 # add the CoffeeScript helpers.
-skeleton = String(skeleton)
+skeleton = skeleton.toString()
   .replace(/function\s*\(.*\)\s*\{/, '')
   .replace(/return null;\s*\}$/, '')
 
@@ -294,7 +294,7 @@ skeleton = coffeescript_helpers + skeleton
 coffeecup.compile = (template, options = {}) ->
   # The template can be provided as either a function or a CoffeeScript string
   # (in the latter case, the CoffeeScript compiler must be available).
-  if typeof template is 'function' then template = String(template)
+  if typeof template is 'function' then template = template.toString()
   else if typeof template is 'string' and coffee?
     template = coffee.compile template, bare: yes
     template = "function(){#{template}}"

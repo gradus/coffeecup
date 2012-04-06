@@ -39,9 +39,9 @@ describe 'Local vars optimized', ->
     it 'should render <h1>dynamic: bar</h1>', ->
       obj = {foo: 'bar'}
       v = -> h1 "dynamic: " + obj.foo
-      cc.render(v, optimized: true, locals: {obj: obj}).should.equal '<h1>dynamic: bar</h1>'
+      cc.render(v, optimized: true, locals: {obj: obj, cache: on}).should.equal '<h1>dynamic: bar</h1>'
       obj.foo = 'baz'
-      cc.render(v, optimized: true, locals: {obj: obj}).should.equal '<h1>dynamic: baz</h1>'
+      cc.render(v, optimized: true, locals: {obj: obj}, cache: on).should.equal '<h1>dynamic: baz</h1>'
 
 describe 'Local vars, hardcoded optimized', ->
   describe 'h1 "harcoded: " + obj.foo', ->
@@ -49,7 +49,7 @@ describe 'Local vars, hardcoded optimized', ->
       obj = {foo: 'bar'}
       v = -> h1 "harcoded: " + obj.foo
       expected = '<h1>harcoded: bar</h1>'
-      compiled = cc.compile(v, optimized: true, hardcode: {obj})
+      compiled = cc.compile(v, optimized: true, hardcode: {obj, cache: on})
       result = compiled()
       result.should.equal expected
       obj.foo = 'baz'

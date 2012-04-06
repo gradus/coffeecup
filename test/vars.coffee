@@ -32,7 +32,7 @@ describe 'Context vars optimized', ->
   describe 'h1 @foo', ->
     it 'should render <h1>bar</h1>', ->
       v = -> h1 @foo
-      cc.render(v, optimized: true, foo: 'bar').should.equal '<h1>bar</h1>'
+      cc.render(v, optimized: true, foo: 'bar', cache: on).should.equal '<h1>bar</h1>'
 
 describe 'Local vars optimized', ->
   describe 'h1 "dynamic: " + obj.foo', ->

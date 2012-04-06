@@ -10,4 +10,4 @@ describe 'yield optimized', ->
   describe 'p "This text could use \#{yield -> strong -> a href: \'/\', \'a link\'}."', ->
     it 'should render <p>This text could use <strong><a href="/">a link</a></strong>.</p>', ->
       t = -> p "This text could use #{yield -> strong -> a href: '/', 'a link'}."
-      cc.render(t, optimized: true).should.equal '<p>This text could use <strong><a href="/">a link</a></strong>.</p>'
+      cc.render(t, optimized: true, cache: on).should.equal '<p>This text could use <strong><a href="/">a link</a></strong>.</p>'

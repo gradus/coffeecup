@@ -10,4 +10,4 @@ describe 'literal optimized', ->
   describe '#text(value)', ->
     it 'should render just plain text', ->
       t = -> text 'foobar'
-      cc.render(t, optimized: true).should.equal 'foobar'
+      cc.render(t, optimized: true, cache: on).should.equal 'foobar'

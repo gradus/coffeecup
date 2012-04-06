@@ -172,7 +172,7 @@ render = cc.render
       if not test.params?
         test.params =
           optimize: true
-          cache: on
+          cache: on unless total is 1
       else
         test.params.optimize = true
         test.params.cache = true
@@ -183,7 +183,6 @@ render = cc.render
       else
         test.result = cc.render(test.template, test.params)
         test.success = test.result is test.expected
-        
       if test.success
         passed.push name
         print "[Passed] #{name}\n"

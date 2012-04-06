@@ -10,4 +10,4 @@ describe 'IE conditionals optimized', ->
   describe " ie 'gte IE8', -> link href: 'ie.css', rel: 'stylesheet'", ->
     it 'should render <!--[if gte IE8]><link href="ie.css" rel="stylesheet" /><![endif]-->', ->
       h = -> ie 'gte IE8', -> link href: 'ie.css', rel: 'stylesheet'
-      cc.render(h, optimized: true).should.equal '<!--[if gte IE8]><link href="ie.css" rel="stylesheet" /><![endif]-->'
+      cc.render(h, optimized: true, cache: on).should.equal '<!--[if gte IE8]><link href="ie.css" rel="stylesheet" /><![endif]-->'

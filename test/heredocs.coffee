@@ -30,4 +30,4 @@ describe 'HereDocs optimized', ->
           alert('test');
         });
       """
-      cc.render(h, optimized: true).should.equal '<script>$(document).ready(function(){\n  alert(\'test\');\n});</script>'
+      cc.render(h, optimized: true, cache: on).should.equal '<script>$(document).ready(function(){\n  alert(\'test\');\n});</script>'

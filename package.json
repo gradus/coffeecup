@@ -11,7 +11,8 @@
   "dependencies": {
     "coffee-script": ">= 1.2.0",
     "optparse": ">= 1.0.3",
-    "uglify-js": "*"
+    "uglify-js": "*",
+    "stylus": ">=0.25.0"
   },
   "devDependencies": {
     "jade": "0.13.0",
@@ -19,8 +20,7 @@
     "ejs": "0.4.3",
     "haml": "0.4.2",
     "mocha": "1.0.0",
-    "should": "0.6.0",
-    "stylus": "0.25.0"
+    "should": "0.6.0"
   },
   "keywords": [
     "template",

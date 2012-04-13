@@ -271,6 +271,15 @@ skeleton = (data = {}) ->
         param.type = 'text/coffeescript'
         script param
 
+  stylus = (s) ->
+    text '<style>'
+    text '\n' if data.format
+    data.stylus.render s, {compress: not data.format}, (err, css) ->
+      if err then throw err
+      text css
+    text '</style>'
+    text '\n' if data.format
+
   # Conditional IE comments.
   ie = (condition, contents) ->
     __cc.indent()
@@ -359,6 +368,7 @@ cache = {}
 coffeecup.render = (template, data = {}, options = {}) ->
   data[k] = v for k, v of options
   data.cache ?= off
+  try data.stylus = require 'stylus'
 
   # Do not optimize templates if the cache is disabled, as it will slow
   # everything down considerably.

@@ -1,3 +1,8 @@
+**v0.3.9** (2012-4-13):
+  - add stylus support
+  - locked coffeescript at 1.2.0
+
+
 **v0.3.6** (2012-4-01):
 
   - added support for SVG 1.1 tags

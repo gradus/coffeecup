@@ -29,6 +29,11 @@ Here's what a template written for CoffeeCup looks like:
           header, nav, section, footer {display: block}
         '''
         
+        stylus '''
+          body
+            margin: 0
+        '''
+                 
         script src: '/js/jquery.js'
         
         coffeescript ->

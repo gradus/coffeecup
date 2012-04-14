@@ -368,7 +368,7 @@ cache = {}
 coffeecup.render = (template, data = {}, options = {}) ->
   data[k] = v for k, v of options
   data.cache ?= off
-  try data.stylus = require 'stylus'
+  data.stylus = require 'stylus'
 
   # Do not optimize templates if the cache is disabled, as it will slow
   # everything down considerably.

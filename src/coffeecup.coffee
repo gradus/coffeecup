@@ -77,7 +77,7 @@ elements =
  filter font font-face font-face-format font-face-name font-face-src
  font-face-uri foreignObject g glyph glyphRef hkern image line linearGradient
  marker mask metadata missing-glyph mpath path pattern polygon polyline
- radialGradient rect script set stop style svg switch symbol text textPath
+ radialGradient rect script set stop style svg symbol text textPath
  title tref tspan use view vkern'
 
   # Valid self-closing HTML 5 elements.

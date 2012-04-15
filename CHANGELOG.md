@@ -1,3 +1,6 @@
+**v0.3.10** (2012-4-14):
+  - fixed bug with switch statement
+
 **v0.3.9** (2012-4-13):
   - add stylus support
   - locked coffeescript at 1.2.0

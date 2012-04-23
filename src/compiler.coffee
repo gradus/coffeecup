@@ -30,7 +30,7 @@ skeleton = '''
     }
     return escaped;
   };
-  var yield = function(f) {
+  var cede = function(f) {
     var temp_buffer = '';
     var old_buffer = __cc.buffer;
     __cc.buffer = temp_buffer;
@@ -310,7 +310,7 @@ exports.compile = (source, hardcoded_locals, options) ->
             when 'binary'
 
               # Traverse the ast nodes, selectively escaping anything other
-              # than hardcoded strings and calls to `yield`.
+              # than hardcoded strings and calls to `cede`.
               escape_all = (node) ->
                 switch node[0]
                   when 'binary'
@@ -320,7 +320,7 @@ exports.compile = (source, hardcoded_locals, options) ->
                   when 'string'
                     return node
                   when 'call'
-                    if node[1][0] is 'name' and node[1][1] is 'yield'
+                    if node[1][0] is 'name' and node[1][1] is 'cede'
                       return node
                     return escape node
                   else

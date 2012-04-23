@@ -13,7 +13,7 @@ h = (txt) ->
     escaped = txt
   escaped
 
-yield = (f) ->
+cede = (f) ->
   temp_buffer = ""
   old_buffer = __cc.buffer
   __cc.buffer = temp_buffer

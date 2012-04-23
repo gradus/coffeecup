@@ -229,7 +229,7 @@ skeleton = (data = {}) ->
 
     __cc.render_tag(name, idclass, attrs, contents)
 
-  yield = (f) ->
+  cede = (f) ->
     temp_buffer = []
     old_buffer = __cc.buffer
     __cc.buffer = temp_buffer

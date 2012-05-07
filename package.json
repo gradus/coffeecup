@@ -3,7 +3,7 @@
   "description": "Markup as CoffeeScript.",
   "version": "0.3.11",
   "author": "Kris Windham <kriswindham@gmail.com>",
-  "homepage": "http://easydoc.org/coffeecup/",
+  "homepage": "http://easydoc.org/coffeecup",
   "repository": {
     "type": "git",
     "url": "git://github.com/gradus/coffeecup.git"
@@ -32,7 +32,7 @@
   },
   "main": "./lib/coffeecup",
   "engines": {
-    "node": ">= 0.6.7"
+    "node": "0.6.x"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"

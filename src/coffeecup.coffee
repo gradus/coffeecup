@@ -189,12 +189,14 @@ skeleton = (data = {}) ->
           @tabs--
           @indent()
 
-    render_tag: (name, idclass, attrs, contents) ->
+    render_tag: (name, idclass, attrs, inline, contents) ->
       @indent()
 
       text "<#{name}"
       @render_idclass(idclass) if idclass
       @render_attrs(attrs) if attrs
+      
+      text " #{inline}" if inline
 
       if name in @self_closing
         text ' />'
@@ -223,11 +225,20 @@ skeleton = (data = {}) ->
             contents = a
           else
             if a is args[0]
-              idclass = a
+              first   = a.charAt(0)
+              if first == '#' || first == '.'
+                idclass = a.substr(0, a.indexOf(' '))
+                inline = a.substr(a.indexOf(' ') + 1)
+                if idclass == ''
+                  idclass = inline
+                  inline = undefined
+              else
+                inline  = a
+                inline  = undefined if inline == ''
             else
               contents = a
 
-    __cc.render_tag(name, idclass, attrs, contents)
+    __cc.render_tag(name, idclass, attrs, inline, contents)
 
   cede = (f) ->
     temp_buffer = []

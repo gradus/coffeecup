@@ -5,10 +5,10 @@ log = console.log
 {spawn, exec} = require 'child_process'
 
 # ANSI Terminal Colors
-bold = '\033[0;1m'
-green = '\033[0;32m'
-reset = '\033[0m'
-red = '\033[0;31m'
+bold = ''
+green = ''
+reset = ''
+red = ''
 
 # Internal Functions
 #

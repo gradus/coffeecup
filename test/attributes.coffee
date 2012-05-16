@@ -11,6 +11,15 @@ describe 'Attribute values', ->
     it 'should render <br vrai="vrai" str="str" num="42" arr="1,2,3" obj-foo="bar" func="(function () {}).call(this);" />', ->
       a = -> br vrai: yes, faux: no, undef: @foo, nil: null, str: 'str', num: 42, arr: [1, 2, 3], obj: {foo: 'bar'}, func: ->
       cc.render(a).should.equal '<br vrai="vrai" str="str" num="42" arr="1,2,3" obj-foo="bar" func="(function () {}).call(this);" />'
+      
+describe 'Inline attributes', ->
+  describe "p '#foo {{bindAttr class=isSelected}}, 'Bar'", ->
+    a = -> p '#foo {{bindAttr class="isSelected"}}', 'Bar'
+    cc.render(a).should.equal '<p id="foo" {{bindAttr class="isSelected"}}>Bar</p>'
+      
+  describe "p '{{bindAttr class=isActive target=App}}, 'Bar'", ->
+    a = -> p '{{bindAttr class="isActive" target="App"}}', 'Bar'
+    cc.render(a).should.equal '<p {{bindAttr class="isActive" target="App"}}>Bar</p>'
 
 describe 'Attributes optimized', ->
   describe "a href: '/', title: 'Home'", ->

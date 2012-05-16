@@ -1,3 +1,9 @@
+**v0.3.12**
+  - add ability to support inline strings (thanks @viatropos)
+
+**v0.3.11**
+  - add stylus suport
+
 **v0.3.10** (2012-4-14):
   - fixed bug with switch statement
 

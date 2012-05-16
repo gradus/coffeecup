@@ -34,7 +34,7 @@ write = (input_path, name, contents, output_directory, ext) ->
   filename = name + ext
   dir = output_directory or path.dirname input_path
   path.exists dir, (exists) ->
-    unless exists then fs.mkdirSync dir, 0777
+    unless exists then fs.mkdirSync dir
     
     output_path = path.join dir, filename
     contents = ' ' if contents.length <= 0

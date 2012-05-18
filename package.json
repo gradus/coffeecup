@@ -32,7 +32,7 @@
   },
   "main": "./lib/coffeecup",
   "engines": {
-    "node": "0.6.x"
+    "node": "0.4.x || 0.6.x"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"

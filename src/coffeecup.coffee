@@ -284,6 +284,7 @@ skeleton = (data = {}) ->
         script param
 
   stylus = (s) ->
+    throw new TemplateError('stylus is not available') unless data.stylus?
     text '<style>'
     text '\n' if data.format
     data.stylus.render s, {compress: not data.format}, (err, css) ->
@@ -380,7 +381,9 @@ cache = {}
 coffeecup.render = (template, data = {}, options = {}) ->
   data[k] = v for k, v of options
   data.cache ?= off
-  data.stylus = require 'stylus'
+
+  if not window?
+    data.stylus = require 'stylus'
 
   # Do not optimize templates if the cache is disabled, as it will slow
   # everything down considerably.

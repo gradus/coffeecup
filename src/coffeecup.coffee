@@ -141,11 +141,12 @@ skeleton = (data = {}) ->
     render_idclass: (str) ->
       classes = []
 
-      for i in str.split '.'
-        if '#' in i
-          id = i.replace '#', ''
+      for i, idx in str.split '.' when i isnt ''
+        # look for an id in the first part
+        if idx is 0 and i.indexOf('#') is 0
+          id = i.slice(1)
         else
-          classes.push i unless i is ''
+          classes.push i
 
       text " id=\"#{id}\"" if id
 
@@ -283,6 +284,7 @@ skeleton = (data = {}) ->
         script param
 
   stylus = (s) ->
+    throw new TemplateError('stylus is not available') unless data.stylus?
     text '<style>'
     text '\n' if data.format
     data.stylus.render s, {compress: not data.format}, (err, css) ->
@@ -379,7 +381,9 @@ cache = {}
 coffeecup.render = (template, data = {}, options = {}) ->
   data[k] = v for k, v of options
   data.cache ?= off
-  data.stylus = require 'stylus'
+
+  if not window?
+    data.stylus = require 'stylus'
 
   # Do not optimize templates if the cache is disabled, as it will slow
   # everything down considerably.

@@ -141,11 +141,12 @@ skeleton = (data = {}) ->
     render_idclass: (str) ->
       classes = []
 
-      for i in str.split '.'
-        if '#' in i
-          id = i.replace '#', ''
+      for i, idx in str.split '.' when i isnt ''
+        # look for an id in the first part
+        if idx is 0 and i.indexOf('#') is 0
+          id = i.slice(1)
         else
-          classes.push i unless i is ''
+          classes.push i
 
       text " id=\"#{id}\"" if id
 

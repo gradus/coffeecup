@@ -1,3 +1,6 @@
+**v0.3.13
+  - fix ie browser issues
+
 **v0.3.12**
   - add ability to support inline strings (thanks @viatropos)
 

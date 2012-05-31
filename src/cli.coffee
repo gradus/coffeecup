@@ -10,6 +10,27 @@ options = null
 handle_error = (err) -> console.log err.stack if err
 
 compile = (input_path, output_directory, js, namespace = 'templates') ->
+  if Array.isArray input_path
+    i = 0
+    body = ''
+    appendTemplate = ->
+      if i >= input_path.length
+        output = """
+          (function(){ 
+            this.#{namespace} || (this.#{namespace} = {});
+            #{body}
+          }).call(this);
+        """
+        write input_path[0], namespace, output, output_directory, '.js'
+      else
+        fs.readFile input_path[i], 'utf-8', (err, contents) ->
+          handle_error err
+          name = path.basename input_path[i], path.extname(input_path[i])
+          func = coffeecup.compile contents, options
+          body += "this.#{namespace}[#{JSON.stringify name}] = #{func};\n"
+          i += 1
+          appendTemplate()
+    return appendTemplate()
   fs.readFile input_path, 'utf-8', (err, contents) ->
     handle_error err
 
@@ -78,7 +99,10 @@ switches = [
       coffeecup.render contents, options
 
   if args.length > 0
-    file = args[0]
+    if args.length > 1 and options.js
+      file = args[..]
+    else
+      file = args[0]
 
     if options.watch
       fs.watchFile file, {persistent: true, interval: 500}, (curr, prev) ->

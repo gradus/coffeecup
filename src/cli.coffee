@@ -9,12 +9,26 @@ options = null
 
 handle_error = (err) -> console.log err.stack if err
 
+watch = (files, fn) ->
+  if false #fs.watch should be used, but it's not working properly
+    for file in files
+      do ->
+        currentFile = file
+        fs.watch currentFile, (event) ->
+          fn(currentFile) if event is 'change'
+  else
+    for file in files
+      do ->
+        currentFile = file
+        fs.watchFile currentFile, {persistent: true, interval: 500}, (curr, prev) ->
+          fn(currentFile) unless curr.size is prev.size and curr.mtime.getTime() is prev.mtime.getTime()
+
 compile = (input_path, output_directory, js, namespace = 'templates') ->
   if Array.isArray input_path
     i = 0
     body = ''
     appendTemplate = ->
-      if i >= input_path.length
+      if i >= input_path.length or not options.package
         output = """
           (function(){ 
             this.#{namespace} || (this.#{namespace} = {});
@@ -82,8 +96,9 @@ switches = [
   ['-z', '--optimize', 'optimize resulting JS']
   ['-v', '--version', 'display coffeecup version']
   ['-h', '--help', 'display this help message']
+  ['-k', '--package', 'use with -j to include all templates in a single [namespace].js']
 ]
-
+ 
 @run = ->
   parser = new OptionParser switches, usage
   options = parser.parse argv
@@ -99,15 +114,17 @@ switches = [
       coffeecup.render contents, options
 
   if args.length > 0
-    if args.length > 1 and options.js
-      file = args[..]
-    else
-      file = args[0]
+    files = args[..]
 
     if options.watch
-      fs.watchFile file, {persistent: true, interval: 500}, (curr, prev) ->
-        return if curr.size is prev.size and curr.mtime.getTime() is prev.mtime.getTime()
+      watch files, (file) ->
+        if options.package and options.js
+          compile files, options.output, options.js, options.namespace
+        else
+          compile file, options.output, options.js, options.namespace
+    if options.js and options.package
+      compile files, options.output, options.js, options.namespace
+    else
+      for file in files
         compile file, options.output, options.js, options.namespace
-
-    compile file, options.output, options.js, options.namespace
 

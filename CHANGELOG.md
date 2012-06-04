@@ -1,4 +1,8 @@
-**v0.3.13
+**v0.3.14**
+  - compiler Added multi-file support to the -j option (thanks @ilogico)
+  - compiler --watch now works with multiple files (thanks @ilogico)
+
+**v0.3.13**
   - fix ie browser issues
 
 **v0.3.12**

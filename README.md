@@ -229,7 +229,7 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 ## Resources
 
-- [API reference](https://github.com/gradus/coffeekup/blob/master/docs/reference.md)
+- [API reference](https://github.com/gradus/coffeecup/blob/master/docs/reference.md)
 
 - [Issues](https://github.com/gradus/coffeecup/issues)
 

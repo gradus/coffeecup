@@ -407,16 +407,15 @@ unless window?
           Error.captureStackTrace this, arguments.callee
         name: 'TemplateError'
 
-      compile: (template, data) ->
+      compiler: (path, data, cb) ->
         # Allows `partial 'foo'` instead of `text @partial 'foo'`.
         data.hardcode ?= {}
         data.hardcode.partial = ->
           text @partial.apply @, arguments
 
-        TemplateError = @TemplateError
-        try tpl = coffeecup.compile(template, data)
-        catch e then throw new TemplateError "Error compiling #{data.filename}: #{e.message}"
+        require('fs').readFile path, 'utf8', (err, template) ->
+          if err then return cb err          
 
-        return ->
-          try tpl arguments...
-          catch e then throw new TemplateError "Error rendering #{data.filename}: #{e.message}"
+          TemplateError = @TemplateError
+          try cb null, coffeecup.render template, data
+          catch e then cb new TemplateError("Error compiling #{data.filename}: #{e.message}"), template

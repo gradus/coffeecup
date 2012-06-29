@@ -1,7 +1,7 @@
 {
   "name": "coffeecup",
   "description": "Markup as CoffeeScript.",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "author": "Kris Windham <kriswindham@gmail.com>",
   "homepage": "http://easydoc.org/coffeecup",
   "repository": {

@@ -1,3 +1,6 @@
+**v0.3.15**
+  - allow 0 to be rendered as value in render_attrs
+
 **v0.3.14**
   - compiler Added multi-file support to the -j option (thanks @ilogico)
   - compiler --watch now works with multiple files (thanks @ilogico)

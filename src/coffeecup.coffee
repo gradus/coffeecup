@@ -395,6 +395,19 @@ coffeecup.render = (template, data = {}, options = {}) ->
   tpl(data)
 
 unless window?
+  coffeecup.__express = (path, options = {}, fn) ->
+    options.stylus = require 'stylus'
+    if options.optimize and not options.cache then options.optimize = no
+    if options.cache and cache[path]?
+      tpl = cache[path]
+      fn null, tpl(options)
+    else
+      fs.readFile path, 'utf8', (err, str) ->
+        if err then return fn err
+        tpl = coffeecup.compile(str,options);
+        if options.cache then cache[path] = tpl
+        fn null, tpl(options)
+
   coffeecup.adapters =
     # Legacy adapters for when coffeecup expected data in the `context` attribute.
     simple: coffeecup.render

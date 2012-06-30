@@ -17,6 +17,7 @@ else
   coffee = require 'coffee-script'
   compiler = require __dirname + '/compiler'
   compiler.setup coffeecup
+  fs = require 'fs'
 
 coffeecup.version = '0.3.16'
 

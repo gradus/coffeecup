@@ -1,3 +1,6 @@
+**v0.3.16**
+  - Add support for Express 3 (thanks @shimaore)
+
 **v0.3.15**
   - allow 0 to be rendered as value in render_attrs
 

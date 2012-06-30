@@ -18,7 +18,7 @@ else
   compiler = require __dirname + '/compiler'
   compiler.setup coffeecup
 
-coffeecup.version = '0.3.15'
+coffeecup.version = '0.3.16'
 
 # Values available to the `doctype` function inside a template.
 # Ex.: `doctype 'strict'`
@@ -404,7 +404,7 @@ unless window?
     else
       fs.readFile path, 'utf8', (err, str) ->
         if err then return fn err
-        tpl = coffeecup.compile(str,options);
+        tpl = coffeecup.compile(str,options)
         if options.cache then cache[path] = tpl
         fn null, tpl(options)
 

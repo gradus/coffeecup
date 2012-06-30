@@ -1,4 +1,6 @@
+assert = require 'assert'
+
 describe 'main', ->
   it 'should be true', ->
     x = true
-    x.should.equal(true)
+    assert.equal x, true

@@ -1,4 +1,5 @@
 cc = require '../lib/coffeecup'
+assert = require 'assert'
 
 describe 'CoffeeScript helper (function)', ->
   describe "coffeescript -> alert 'hi'",  ->
@@ -18,19 +19,19 @@ var __indexOf = Array.prototype.indexOf || function(item) {
     """.replace /\n/g, ''
     it "should render <script>#{coffeescript_helper}(function () {\n return alert('hi');\n }).call(this);</script>", ->
       h = -> coffeescript -> alert 'hi'
-      cc.render(h).should.equal "<script>#{coffeescript_helper}(function () {\n            return alert('hi');\n          }).call(this);</script>"
+      assert.equal cc.render(h), "<script>#{coffeescript_helper}(function () {\n            return alert('hi');\n          }).call(this);</script>"
 
 describe 'CoffeeScript helper (string)', ->
   describe 'coffeescript "alert \'hi\'\"',  ->
     it 'should render <script type="text/coffeescript">alert \'hi\'</script>', ->
       h = -> coffeescript "alert 'hi'"
-      cc.render(h).should.equal '<script type="text/coffeescript">alert \'hi\'</script>'
+      assert.equal cc.render(h), '<script type="text/coffeescript">alert \'hi\'</script>'
 
 describe 'CoffeeScript helper (object)', ->
   describe "coffeescript src: 'script.coffee'",  ->
     it 'should render <script src="script.coffee" type="text/coffeescript"></script>', ->
       h = -> coffeescript src: 'script.coffee'
-      cc.render(h).should.equal '<script src="script.coffee" type="text/coffeescript"></script>'
+      assert.equal cc.render(h), '<script src="script.coffee" type="text/coffeescript"></script>'
 
 describe 'CoffeeScript helper (function) optimized', ->
   describe "coffeescript -> alert 'hi'",  ->
@@ -50,18 +51,18 @@ var __indexOf = Array.prototype.indexOf || function(item) {
     """.replace /\n/g, ''
     it "should render <script>#{coffeescript_helper}(function () {\n return alert('hi');\n }).call(this);</script>", ->
       h = -> coffeescript -> alert 'hi'
-      cc.render(h, optimized: true).should.equal "<script>#{coffeescript_helper}(function () {\n            return alert('hi');\n          }).call(this);</script>"
+      assert.equal cc.render(h, optimized: true), "<script>#{coffeescript_helper}(function () {\n            return alert('hi');\n          }).call(this);</script>"
 
 describe 'CoffeeScript helper (string) optimized', ->
   describe 'coffeescript "alert \'hi\'\"',  ->
     it 'should render <script type="text/coffeescript">alert \'hi\'</script>', ->
       h = -> coffeescript "alert 'hi'"
-      cc.render(h, optimized: true).should.equal '<script type="text/coffeescript">alert \'hi\'</script>'
+      assert.equal cc.render(h, optimized: true), '<script type="text/coffeescript">alert \'hi\'</script>'
 
 describe 'CoffeeScript helper (object) optimized', ->
   describe "coffeescript src: 'script.coffee'",  ->
     it 'should render <script src="script.coffee" type="text/coffeescript"></script>', ->
       h = -> coffeescript src: 'script.coffee'
-      cc.render(h, optimized: true).should.equal '<script src="script.coffee" type="text/coffeescript"></script>'
+      assert.equal cc.render(h, optimized: true), '<script src="script.coffee" type="text/coffeescript"></script>'
 
 

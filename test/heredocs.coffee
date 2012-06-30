@@ -1,4 +1,5 @@
 cc = require '../lib/coffeecup'
+assert = require 'assert'
 
 describe 'HereDocs', ->
   describe '''
@@ -14,7 +15,7 @@ describe 'HereDocs', ->
           alert('test');
         });
       """
-      cc.render(h).should.equal '<script>$(document).ready(function(){\n  alert(\'test\');\n});</script>'
+      assert.equal cc.render(h), '<script>$(document).ready(function(){\n  alert(\'test\');\n});</script>'
 
 describe 'HereDocs optimized', ->
   describe '''
@@ -30,4 +31,4 @@ describe 'HereDocs optimized', ->
           alert('test');
         });
       """
-      cc.render(h, optimized: true, cache: on).should.equal '<script>$(document).ready(function(){\n  alert(\'test\');\n});</script>'
+      assert.equal cc.render(h, optimized: true, cache: on), '<script>$(document).ready(function(){\n  alert(\'test\');\n});</script>'

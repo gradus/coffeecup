@@ -1,13 +1,14 @@
 cc = require '../lib/coffeecup'
+assert = require 'assert'
 
 describe 'Common tag', ->
   describe "p 'foo'", ->
     it 'should render foo in <p> tag', ->
       p = -> p 'foo'
-      cc.render(p).should.equal '<p>foo</p>'
+      assert.equal cc.render(p), '<p>foo</p>'
 
 describe 'Common tag optimized', ->
   describe "p 'foo'", ->
     it 'should render foo in <p> tag', ->
       p = -> p 'foo'
-      cc.render(p, optimized: true, cache: on).should.equal '<p>foo</p>'
+      assert.equal cc.render(p, optimized: true, cache: on), '<p>foo</p>'

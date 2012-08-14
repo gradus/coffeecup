@@ -399,15 +399,26 @@ unless window?
   coffeecup.__express = (path, options = {}, fn) ->
     options.stylus = require 'stylus'
     if options.optimize and not options.cache then options.optimize = no
+
+    render = (tpl) ->
+      try
+        fn null, tpl(options)
+      catch err
+        fn err
+
     if options.cache and cache[path]?
       tpl = cache[path]
-      fn null, tpl(options)
+      render(tpl)
     else
       fs.readFile path, 'utf8', (err, str) ->
         if err then return fn err
-        tpl = coffeecup.compile(str,options)
+        try
+          tpl = coffeecup.compile(str,options)
+        catch err
+          return fn err
+
         if options.cache then cache[path] = tpl
-        fn null, tpl(options)
+        render(tpl)
 
   coffeecup.adapters =
     # Legacy adapters for when coffeecup expected data in the `context` attribute.

@@ -19,7 +19,7 @@ else
   compiler.setup coffeecup
   fs = require 'fs'
 
-coffeecup.version = '0.3.16'
+coffeecup.version = '0.3.17'
 
 # Values available to the `doctype` function inside a template.
 # Ex.: `doctype 'strict'`

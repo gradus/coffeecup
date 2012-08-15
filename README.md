@@ -1,6 +1,7 @@
 # CoffeeCup <☕/>
 ## Markup as CoffeeScript
 
+
 [![Build Status](https://secure.travis-ci.org/gradus/coffeecup.png?branch=master)](http://travis-ci.org/gradus/coffeecup)
 
 This is a clone of @mauricemach [CoffeeCup](https://github.com/mauricemach/coffeekup).

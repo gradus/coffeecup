@@ -68,7 +68,8 @@ compile = (input_path, output_directory, js, namespace = 'templates') ->
 write = (input_path, name, contents, output_directory, ext) ->
   filename = name + ext
   dir = output_directory or path.dirname input_path
-  path.exists dir, (exists) ->
+  exists = fs.exists or path.exists ?
+  exists dir, (exists) ->
     unless exists then fs.mkdirSync dir
     
     output_path = path.join dir, filename

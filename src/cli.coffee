@@ -71,7 +71,7 @@ write = (input_path, name, contents, output_directory, ext) ->
   exists = fs.exists or path.exists
   exists dir, (exists) ->
     unless exists then fs.mkdirSync dir
-    
+
     output_path = path.join dir, filename
     contents = ' ' if contents.length <= 0
     fs.writeFile output_path, contents, (err) ->

@@ -1,3 +1,6 @@
+**v0.3.17**
+  - return compilation and render errors to express 3 (thanks @randypuro) 
+
 **v0.3.16**
   - Add support for Express 3 (thanks @shimaore)
 

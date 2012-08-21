@@ -168,8 +168,7 @@ Precompiling to functions:
 
 With [express](http://expressjs.com):
 
-    app.set 'view engine', 'coffee'
-    app.register '.coffee', require('coffeecup').adapters.express
+    app.engine 'coffee', require('coffeecup').__express
 
     app.get '/', (req, res) ->
       # Will render views/index.coffee:

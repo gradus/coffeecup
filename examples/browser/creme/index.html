@@ -8,7 +8,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
     <script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
-    <script src="coffeekup.js"></script>
+    <script src="../../../lib/coffeecup.js"></script>
 
     <script type="text/coffeescript">
       stooges = ['moe', 'larry', 'curly']
@@ -29,8 +29,8 @@
             for guy in @stooges
               li guy
 
-        $('body').append CoffeeKup.render(stringy, stooges: stooges)
-        $('body').append CoffeeKup.render(codey, stooges: stooges)
+        $('body').append coffeecup.render(stringy, stooges: stooges)
+        $('body').append coffeecup.render(codey, stooges: stooges)
     </script>
   </head>
   <body>

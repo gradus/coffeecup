@@ -1,3 +1,6 @@
+**v0.3.18**
+  - Switch coffee-script dependency expression to include minor version updates   (for recent 1.4 update -- thanks @asalant)
+
 **v0.3.17**
   - return compilation and render errors to express 3 (thanks @randypuro) 
 

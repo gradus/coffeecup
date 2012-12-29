@@ -238,6 +238,8 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 ## Tools
 
+- [Haml ▸ HTML ▸ Coffeecup ▸ Javascript ▸ CoffeeScript Converter](https://github.com/mikesmullin/haml-html-coffeecup-javascript-coffeescript-converter) - hosted tool works in your browser.
+
 - [html2coffeekup](https://github.com/brandonbloom/html2coffeekup) - Converts HTML to CoffeeCup templates.
 
 - [htmlkup](https://github.com/colinta/htmlkup) - Another HTML converter, stdin/stdout based.

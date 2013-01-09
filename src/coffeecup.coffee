@@ -171,7 +171,7 @@ skeleton = (data = {}) ->
           # `data: {icon: 'foo'}` is rendered as `data-icon="foo"`.
           @render_attrs(v, prefix + k + '-')
         # `undefined`, `false` and `null` result in the attribute not being rendered.
-        else if v or v==0
+        else if v or v==0 or v==''
           # strings, numbers, arrays and functions are rendered "as is".
           text " #{prefix + k}=\"#{@esc(v)}\""
 

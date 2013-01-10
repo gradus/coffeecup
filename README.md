@@ -274,7 +274,7 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 - [iron-coffee](https://github.com/twilson63/iron-coffee) - Flatiron and Coffee-Script Template.
  
-- [teacup](https://github.com/goodeggs/teacup) - Descendant that preserves lexical scope to avoid dynamic helpers.
+- [teacup](https://github.com/goodeggs/teacup) - Descendant that preserves locals in lexical scope.
 
 
 ## Compatibility

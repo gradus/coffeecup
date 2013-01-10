@@ -1,3 +1,7 @@
+**v0.3.19**
+  - Monkey patch makes "option value: '', 'title'" render correct
+html
+
 **v0.3.18**
   - Switch coffee-script dependency expression to include minor version updates   (for recent 1.4 update -- thanks @asalant)
 

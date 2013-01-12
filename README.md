@@ -279,7 +279,7 @@ Please note that even though all examples are given in CoffeeScript, you can als
 
 ## Compatibility
 
-Latest version tested with node 0.8.16 and CoffeeScript 1.4.0.
+Latest version tested with node 0.8.17 and CoffeeScript 1.4.0.
 
 ## Special thanks
 

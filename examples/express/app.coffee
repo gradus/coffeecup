@@ -1,7 +1,9 @@
-app = require('express').createServer()
+express = require 'express'
+app = express()
 
 coffeecup = require '../../src/coffeecup'
 
+app.set('view engine', 'coffee')
 app.engine 'coffee', require('coffeecup').__express
 
 app.get '/', (req, res) ->

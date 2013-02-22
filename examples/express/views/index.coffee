@@ -9,4 +9,5 @@ p "Let's count to 10: "
 
 p "#{i}..." for i in [1..10]
 
-partial 'partial', [1..10]
+# does not work with express 3.x
+# partial 'partial', [1..10] 

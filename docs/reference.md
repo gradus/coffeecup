@@ -22,7 +22,7 @@ Options:
 
 The compiled template returned will be a function accepting a single object parameter:
 
-`template(data)`
+`compiledTemplate(data)`
 
 All attributes in `data` will be available to the template at `@` (`this`). Some attribute names are special and will trigger additional features:
 

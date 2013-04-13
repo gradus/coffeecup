@@ -85,6 +85,9 @@ elements =
   void: 'area base br col command embed hr img input keygen link meta param
  source track wbr'
 
+  # Support for xml sitemap elements
+  xml: 'xml urlset url loc lastmod changefreq priority'
+
   obsolete: 'applet acronym bgsound dir frameset noframes isindex listing
  nextid noembed plaintext rb strike xmp big blink center font marquee multicol
  nobr spacer tt'
@@ -103,7 +106,7 @@ merge_elements = (args...) ->
 # For each name in this list that is also present in the input template code,
 # a function with the same name will be added to the compiled template.
 coffeecup.tags = merge_elements 'regular', 'obsolete', 'void', 'obsolete_void',
-  'svg'
+  'svg', 'xml'
 
 # Public/customizable list of elements that should be rendered self-closed.
 coffeecup.self_closing = merge_elements 'void', 'obsolete_void'

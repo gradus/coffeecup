@@ -1,3 +1,6 @@
+**v0.3.20**
+  - Add support for xml sitemap elements -- thanks @jking90 
+
 **v0.3.19**
   - Monkey patch makes "option value: '', 'title'" render correct
 html

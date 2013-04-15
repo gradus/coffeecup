@@ -86,7 +86,7 @@ elements =
  source track wbr'
 
   # Support for xml sitemap elements
-  xml: 'xml urlset url loc lastmod changefreq priority'
+  xml: 'urlset url loc lastmod changefreq priority'
 
   obsolete: 'applet acronym bgsound dir frameset noframes isindex listing
  nextid noembed plaintext rb strike xmp big blink center font marquee multicol

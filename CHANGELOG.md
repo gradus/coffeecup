@@ -1,3 +1,6 @@
+**v0.3.21**
+  - Add support for html5 elements
+
 **v0.3.20**
   - Add support for xml sitemap elements -- thanks @jking90 
 

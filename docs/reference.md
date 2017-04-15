@@ -14,7 +14,7 @@ The input template can be provided as either a function or a string. In the latt
 
 Options:
 
-- `locals`: if set to any "truthy" value, will compile the template with the main statements wrapped around a `with` block. The template will then support the `locals` option (see below). This is the "runtime" method of putting external variables in the local scope of the template.
+- `locals`: if set to any "truthy" value, will compile the template with the main statements wrapped around a `with` block. The compiled template will then support the `locals` option (see below). This is the "runtime" method of putting external variables in the local scope of the template.
 
 - `hardcode`: an object containing values to be added to the template's local scope at "compile time". For each attribute in this object a `var [name] = [stringified value]` will be added to the template body.
 
@@ -22,7 +22,7 @@ Options:
 
 The compiled template returned will be a function accepting a single object parameter:
 
-`template(data)`
+`compiledTemplate(data)`
 
 All attributes in `data` will be available to the template at `@` (`this`). Some attribute names are special and will trigger additional features:
 
